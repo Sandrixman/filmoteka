@@ -4,7 +4,7 @@ import renderMovieCard from './js/renderMovieCard';
 import getRefs from './js/refs';
 import spiner from './js/spiner';
 
-const imagesApi = new MovieApiSevice();
+const movieApi = new MovieApiSevice();
 const refs = getRefs();
 
 console.log('Hello');
