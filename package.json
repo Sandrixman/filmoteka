@@ -2,14 +2,14 @@
   "name": "filmoteka",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Sandrixman.github.io/Filmoteka",
+  "homepage": "https://Sandrixman.github.io/filmoteka",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Filmoteka/"
+    "build": "parcel build src/*.html --public-url /filmoteka/"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sandrixman/Filmoteka.git"
+    "url": "https://github.com/Sandrixman/filmoteka.git"
   },
   "keywords": [],
   "author": "Alexander>",
