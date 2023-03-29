@@ -1,0 +1,10 @@
+import './css/main.css';
+import MovieApiSevice from './js/movieApiSevice';
+import renderMovieCard from './js/renderMovieCard';
+import getRefs from './js/refs';
+import spiner from './js/spiner';
+
+const imagesApi = new MovieApiSevice();
+const refs = getRefs();
+
+console.log('Hello');
