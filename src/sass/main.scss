@@ -1,0 +1,10 @@
+@import '../../node_modules/modern-normalize/modern-normalize.css';
+@import './utils/vars';
+@import './utils/placeholder';
+@import './utils/mixins';
+@import './components/header';
+@import './components/gallery';
+
+body {
+  box-sizing: border-box;
+}

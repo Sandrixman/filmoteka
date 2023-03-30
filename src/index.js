@@ -1,4 +1,4 @@
-import './css/main.css';
+import './css/main.min.css';
 import MovieApiSevice from './js/MovieApiSevice';
 import renderMovieCard from './js/renderMovieCard';
 import getRefs from './js/refs';
