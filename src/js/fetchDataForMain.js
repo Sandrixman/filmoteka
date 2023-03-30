@@ -31,10 +31,11 @@ function findGenreByID(id, genresIdList) {
 
 async function getCardData() {
   const genresIdList = await downloadGenresIdList();
-  const { results } = await fetchSearch(trendingUrl, page).then(
-    ({ data }) => data
-  );
-  if (!data) return;
+  const { results } = await fetchSearch(trendingUrl, page).then(({ data }) => {
+    if (!data) console.log('Жодного фільма в тренді за день!');
+    return data;
+  });
+  // if (!data) return;
   return results.map(({ title, poster_path, genre_ids, release_date }) => {
     const fullposter_path = 'https://image.tmdb.org/t/p/w500/' + poster_path;
     const genres = createGenres(genre_ids, genresIdList);
