@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
+    <title>Document</title>
   </head>
   <body>
     <header class="home_header">
@@ -19,35 +19,27 @@
           <nav class="navigation">
             <ul class="navigation_list">
               <li class="navigation-item">
-                <a
-                  href="./index.html"
-                  class="link navigation_link navigation_link--current"
-                  >home</a
-                >
+                <a href="./index.html" class="link navigation_link">home</a>
               </li>
               <li class="navigation-item">
-                <a href="./library.html" class="link navigation_link"
+                <a
+                  href="./library.html"
+                  class="link navigation_link navigation_link--current"
                   >my library</a
                 >
               </li>
             </ul>
           </nav>
         </div>
-        <form action="" class="search_form">
-          <input type="text" class="search_input" placeholder="Movie search" />
-          <button type="submit" class="seach_button">
-            <svg class="search_icon">
-              <use href="./image/search.svg"></use>
-            </svg>
-          </button>
-        </form>
+        <div class="button_container">
+          <button type="button" class="library_button">Watched</button>
+          <button type="button" class="library_button">queue</button>
+        </div>
       </div>
     </header>
-
     <main>
       <div class="container gallery"></div>
     </main>
-
     <footer>
       <div class="container">
         <div class="home_footer">
@@ -56,7 +48,5 @@
         </div>
       </div>
     </footer>
-
-    <script src="./index.js" type="module"></script>
   </body>
 </html>
