@@ -14,12 +14,17 @@ const BASE_URL = 'https://api.themoviedb.org/3/';
 //     });
 //   }
 // }
+// export async function downloadGenresIdList() {
+//   return await axios(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`).then(
+//     ({ data }) => {
+//       return data.genres;
+//     }
+//   );
+// }
+
 export async function downloadGenresIdList() {
-  return await axios(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`).then(
-    ({ data }) => {
-      return data.genres;
-    }
-  );
+  const { data } = await axios(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}`);
+  return data.genres;
 }
 
 export async function fetchSearch(additionalUrl, page) {
