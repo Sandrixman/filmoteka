@@ -8,4 +8,31 @@
 
 body {
   box-sizing: border-box;
+  background-color: #e5e5e5;
+  font-family: Roboto, sans-serif;
+}
+*,
+*::before,
+*::after{
+  box-sizing: inherit;
+}
+ul{
+  margin: 0;
+  padding-left: 0;
+}
+button{
+  border: none;
+  cursor: pointer;
+}
+img{
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+}
+input{
+  border: none;
+}
+.link{
+  text-decoration: none;
 }
