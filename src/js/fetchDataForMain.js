@@ -29,14 +29,13 @@ function findGenreByID(id, genresIdList) {
   return genre.name;
 }
 
-async function getCardData() {
+export async function getCardData() {
   try {
     const genresIdList = await downloadGenresIdList();
 
     const { results, total_pages } = await fetchSearch(trendingUrl, page).then(
       ({ data }) => {
         if (!data) console.log('Жодного фільма в тренді за день!');
-        console.log(data);
         return data;
       }
     );
