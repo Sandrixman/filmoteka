@@ -59,4 +59,3 @@ export async function getCardData() {
     console.log('Помилка при завантаженні');
   }
 }
-getCardData();
