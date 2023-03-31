@@ -1,11 +1,9 @@
 import './css/main.min.css';
-import MovieApiSevice from './js/MovieApiSevice';
-import renderMovieCard from './js/renderMovieCard';
-import getRefs from './js/refs';
+import { getCardData } from './js/fetchDataForMain';
+import { renderMovieCard } from './js/renderMovieCard';
 import spiner from './js/spiner';
 import modal from './js/modal';
 
-const movieApi = new MovieApiSevice();
-const refs = getRefs();
+const gallery = document.querySelector('.movie-list');
 
-console.log('Hello');
+renderMovieCard(gallery, getCardData());
