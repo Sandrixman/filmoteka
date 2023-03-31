@@ -12,29 +12,29 @@ body {
 }
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: inherit;
 }
-ul{
+ul {
   margin: 0;
   padding-left: 0;
 }
-button{
+button {
   border: none;
   cursor: pointer;
 }
-img{
+img {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
 }
-input{
+input {
   border: none;
 }
-li{
-list-style: none;
+li {
+  list-style: none;
 }
-.link{
+.link {
   text-decoration: none;
 }
