@@ -1,3 +1,4 @@
 export default function getRefs() {
-  return null;
-}
+  const searchForm = document.querySelector('.search_form');
+  return { searchForm };
+} 

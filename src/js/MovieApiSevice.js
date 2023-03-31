@@ -32,3 +32,13 @@ export async function fetchSearch(additionalUrl, page) {
     `${BASE_URL}${additionalUrl}?api_key=${API_KEY}&page=${page}`
   );
 }
+
+export async function querySearch(query, page) {
+  const searchMoviePath = 'search/movie';
+  // return await axios(
+  //   `${BASE_URL}${searchMoviePath}?query=${query}&api_key=${API_KEY}&page=${page}`);
+  const { data } = await axios(
+    `${BASE_URL}${searchMoviePath}?query=${query}&api_key=${API_KEY}&page=${page}`
+  );
+  return data;
+}
