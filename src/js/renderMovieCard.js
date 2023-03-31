@@ -1,7 +1,7 @@
 import { getCardData } from './fetchDataForMain';
 
-export default function renderMovieCard(gallery) {
-  getCardData().then(({ card_data }) => {
+export function renderMovieCard(gallery, somePromis) {
+  somePromis.then(({ card_data }) => {
     const markup = card_data
       .map(({ fullposter_path, title, genres, release_year }) => {
         return `
