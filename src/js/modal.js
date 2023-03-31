@@ -1,11 +1,13 @@
-export function renderModal() {
-  const modal = document.querySelector('.js-modal');
-  const overlay = document.querySelector('.overlay');
-  console.log('hi from modal');
+export const refsModal = {
+  modal: document.querySelector('.js-modal'),
+  overlay: document.querySelector('.overlay'),
+  modalInfo: document.querySelector('.modalInfo'),
+  markup: '',
+};
 
-  const markup = `<svg class="close-btn">
-        <use href="./image/symbol-defs.svg#icon-close"></use>
-      </svg>
+export function renderModal() {
+  console.log('hi from modal');
+  markup = `
       <img
         class="modal_img"
         src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
@@ -50,8 +52,25 @@ export function renderModal() {
         </div>
       </div>`;
 
-  modal.innerHTML = markup;
+  //   refsModal.modal.insertAdjacentHTML('beforeend', markup);
+  refsModal.modalInfo.innerHTML = markup;
 
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
+  function removeHidden() {
+    refsModal.modal.classList.remove('hidden');
+    refsModal.overlay.classList.remove('hidden');
+  }
+
+  removeHidden();
+}
+
+export function removeModal() {
+  const closeBtn = document.querySelector('.close-btn');
+  closeBtn.addEventListener('click', addHidden);
+
+  function addHidden() {
+    refsModal.modal.classList.add('hidden');
+    refsModal.overlay.classList.add('hidden');
+
+    refsModal.modalInfo.innerHTML = '';
+  }
 }
