@@ -12,11 +12,7 @@
   background-size: cover;
   background-position: center;
   @include tablet {
-    max-width: 768px;
     height: 216px;
-  }
-  @include desktop {
-    max-width: 1280px;
   }
 }
 .home_container {
