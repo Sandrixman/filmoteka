@@ -34,6 +34,7 @@ async function getSearchedCardData(query, page) {
     console.log(results);
     const moviesList = generateMoviesList(results, total_pages, genresIdList);
     console.log(moviesList);
+    refs.gallery.innerHTML='';
     renderMovieCard(refs.gallery,moviesList.card_data);
   } catch (error) {
     console.log(`Помилка:'${error}`);
