@@ -2,8 +2,10 @@ import { downloadGenresIdList, fetchSearch } from './MovieApiSevice';
 let page = 1;
 const trendingUrl = '/trending/movie/day';
 
-function createGenres(genre_ids, genresIdList) {
+export function createGenres(genre_ids, genresIdList) {
   switch (genre_ids.length) {
+    case 0:
+      return 'Genre not defined';
     case 1:
       return findGenreByID(genre_ids[0], genresIdList);
     case 2:
@@ -24,8 +26,9 @@ function createGenres(genre_ids, genresIdList) {
   }
 }
 
-function findGenreByID(id, genresIdList) {
+export function findGenreByID(id, genresIdList) {
   const genre = genresIdList.find(el => el.id === id);
+  // return genre?.name || '';
   return genre.name;
 }
 
