@@ -11,6 +11,8 @@
 }
 
 .modal {
+  display: none;
+
   position: fixed;
   z-index: 3;
   top: 50%;
@@ -31,12 +33,12 @@
     width: 704px;
     padding: 40px 36px;
     flex-direction: row;
-  gap: 68px;
+    gap: 68px;
   }
   @include desktop {
     width: 806px;
     padding: 40px 12px;
-  gap: 16px;
+    gap: 16px;
   }
 }
 .modal_img {
@@ -141,12 +143,12 @@
   gap: 20px;
   padding: 0;
   justify-content: space-between;
-@include tablet {
-        gap: 15px;
-  justify-content: start;
-    }
-  @include desktop{
-        padding: 0 8px;
+  @include tablet {
+    gap: 15px;
+    justify-content: start;
+  }
+  @include desktop {
+    padding: 0 8px;
   }
 }
 
