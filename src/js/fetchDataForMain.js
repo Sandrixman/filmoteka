@@ -33,15 +33,16 @@ async function getCardData() {
   const genresIdList = await downloadGenresIdList();
   const { results } = await fetchSearch(trendingUrl, page).then(({ data }) => {
     if (!data) console.log('Жодного фільма в тренді за день!');
+    // console.log(data);
     return data;
   });
   // if (!data) return;
-  return results.map(({ title, poster_path, genre_ids, release_date }) => {
+  return results.map(({ title, poster_path, genre_ids, id, release_date }) => {
     const fullposter_path = 'https://image.tmdb.org/t/p/w500/' + poster_path;
     const genres = createGenres(genre_ids, genresIdList);
     const release_year = release_date.slice(0, 4);
-    console.log(fullposter_path, title, genres, release_year);
-    return { fullposter_path, title, genres, release_year };
+    console.log(fullposter_path, title, genres, id, release_year);
+    return { fullposter_path, title, genres, release_year, id };
   });
 }
 getCardData();
