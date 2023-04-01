@@ -61,11 +61,10 @@ export function renderModal(evt) {
 
   removeHidden();
 
-  console.log(evt.target);
+  // console.log(evt.target);
 
-  // if (evt.target.nodeName === 'LI') {
-  //   console.log(evt.target);
-  // }
+  const li = evt.target.closest('.movie-list__item');
+  console.log(li);
 }
 
 export function removeModal() {
