@@ -47,8 +47,9 @@ export function renderModal(evt) {
           </p>
         </div>
         <div class="btn-wrapper">
-          <button class="button modal__btn btn-accent">add to Watched</button>
-          <button class="button modal__btn">add to queue</button>
+          <button class="button modal__btn btn-accent" id="addBtn">add to Watched</button>
+          <button class="button modal__btn" id="addBtn">add to queue</button>
+          <ul id="watchedList"></ul>
         </div>
       </div>`;
 
