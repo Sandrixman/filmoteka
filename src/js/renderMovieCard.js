@@ -1,4 +1,3 @@
-import { error } from 'jquery';
 import { getCardData } from './fetchDataForMain';
 
 export function renderMovieCard(gallery, somePromis) {
@@ -20,5 +19,5 @@ export function renderMovieCard(gallery, somePromis) {
 
       gallery.insertAdjacentHTML('beforeend', markup);
     })
-    .catch(error);
+    .catch(error => console.log(error));
 }
