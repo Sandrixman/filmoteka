@@ -99,11 +99,11 @@
 .logo__word {
   display: none;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover,
-    &:focus {
-      transform: scaleY(1.2);
-      box-shadow: 10px 20px 10px 2px rgba(243, 240, 238, 0.25);
-    }
+  &:hover,
+  &:focus {
+    transform: scaleY(1.2);
+    box-shadow: 10px 20px 10px 2px rgba(243, 240, 238, 0.25);
+  }
   @include tablet {
     display: block;
     font-weight: 500;
@@ -124,12 +124,11 @@
   text-transform: uppercase;
   color: #ffffff;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover,
-    &:focus {
-      transform: scale(1.2);
-      box-shadow: 10px 10px 10px 10px rgba(243, 240, 238, 0.3);
-    }
-  
+  &:hover,
+  &:focus {
+    transform: scale(1.2);
+    box-shadow: 10px 10px 10px 10px rgba(243, 240, 238, 0.3);
+  }
 }
 .navigation__link--current::after {
   content: '';
@@ -228,7 +227,9 @@
   position: absolute;
   top: 20px;
   color: #ff001b;
-  font-size: 14px;
-  line-height: 16px;
-  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+}
+.container.movie {
+  padding-bottom: 60px;
 }

@@ -8,9 +8,10 @@ import getRefs from './js/refs ';
 
 const { searchForm, gallery } = getRefs();
 
-searchForm.addEventListener('submit', onSearchFormSubmit);
+// const gallery = document.querySelector('.movie-list');
 
-renderMovieCard(gallery, getCardData());
+searchForm.addEventListener('submit', onSearchFormSubmit);
+getCardData(); //рендерінг головної сторінки
 
 // модалка фільму
 gallery.addEventListener('click', renderModal);
