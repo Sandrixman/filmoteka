@@ -11,16 +11,16 @@
 }
 
 .modal {
-  display: none;
-
   position: fixed;
   z-index: 3;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0;
+}
+
+.modal__info {
   padding: 48px 20px;
   background-color: #fff;
 
@@ -35,13 +35,15 @@
     flex-direction: row;
     gap: 68px;
   }
+
   @include desktop {
     width: 806px;
     padding: 40px 12px;
     gap: 16px;
   }
 }
-.modal_img {
+
+.modal__img {
   width: 240px;
   height: 357px;
   border-radius: 5px;
@@ -72,7 +74,7 @@
   }
 }
 
-.movie_title {
+.movie-title {
   font-size: 20px;
   line-height: calc(23 / 20);
   font-weight: bold;
@@ -84,14 +86,14 @@
   }
 }
 
-.movie_info-list {
+.movie-info__list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.movie_info-item {
+.movie-info__item {
   display: flex;
 }
 
@@ -122,7 +124,7 @@
   gap: 8px;
 }
 
-.about-title {
+.about__title {
   text-transform: uppercase;
   font-weight: bold;
   margin: 0;
@@ -130,7 +132,7 @@
   line-height: 1.33;
 }
 
-.about-text {
+.about__text {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.67;
@@ -138,7 +140,7 @@
   margin: 0;
 }
 
-.btn_wrapper {
+.btn-wrapper {
   display: flex;
   gap: 20px;
   padding: 0;
@@ -152,7 +154,7 @@
   }
 }
 
-.modal_btn {
+.modal__btn {
   height: 44px;
   padding: 14px 10px;
   text-transform: uppercase;
@@ -183,6 +185,6 @@
   background-color: rgba(0, 0, 0, 0.25);
 }
 
-// .hidden {
-//     display: none;
-// }
+.hidden {
+  display: none;
+}
