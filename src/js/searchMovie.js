@@ -4,11 +4,14 @@ import { renderMovieCard } from './renderMovieCard';
 import getRefs from './refs';
 import dummy from '../image/dummy-poster.jpg';
 import spiner from './spiner';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import startPaginationBox from './paginator';
 
 let page = 1;
 const refs = getRefs();
 
 export function onSearchFormSubmit(evt) {
+  let moviesCards = {};
   evt.preventDefault();
   const { searchInput } = evt.currentTarget.elements;
   const searchQuery = searchInput.value.trim();
@@ -17,7 +20,9 @@ export function onSearchFormSubmit(evt) {
     return;
   }
   refs.gallery.innerHTML = '';
-  renderMovieCard(refs.gallery, generateMoviesList(searchQuery));
+  moviesCards = generateMoviesList(searchQuery);
+  renderMovieCard(refs.gallery, moviesCards);
+  startPaginationBox(moviesCards.total_results);
 }
 
 async function generateMoviesList(query) {
@@ -45,7 +50,7 @@ async function generateMoviesList(query) {
       total_pages,
     }
   } catch (error) {
-    console.log(`Error: '${error}`);
+    Notify.failure('Error happend while the resource loading!');
   }
 }
 
