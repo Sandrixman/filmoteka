@@ -1,41 +1,41 @@
 export const refsModal = {
   modal: document.querySelector('.js-modal'),
   overlay: document.querySelector('.overlay'),
-  modalInfo: document.querySelector('.modalInfo'),
+  modal__info: document.querySelector('.modal__info'),
   markup: '',
 };
 
-export function renderModal() {
-  console.log('hi from modal');
+export function renderModal(evt) {
+  // console.log('hi from modal');
   markup = `
       <img
-        class="modal_img"
+        class="modal__img"
         src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
         alt=""
       />
       <div class="movie-description">
-        <h2 class="movie_title">A FISTFUL OF LEAD</h2>
-        <ul class="movie_info-list">
-          <li class="movie_info-item">
+        <h2 class="movie-title">A FISTFUL OF LEAD</h2>
+        <ul class="movie-info__list">
+          <li class="movie-info__item">
             <p class="info-name">Vote / Votes</p>
             <p class="info-value">1260</p>
           </li>
-          <li class="movie_info-item">
+          <li class="movie-info__item">
             <p class="info-name">Popularity</p>
             <p class="info-value">1260</p>
           </li>
-          <li class="movie_info-item">
+          <li class="movie-info__item">
             <p class="info-name">Original Title</p>
             <p class="info-value">1260</p>
           </li>
-          <li class="movie_info-item">
+          <li class="movie-info__item">
             <p class="info-name">Genre</p>
             <p class="info-value">1260</p>
           </li>
         </ul>
         <div class="movie-about">
-          <p class="about-title">About</p>
-          <p class="about-text">
+          <p class="about__title">About</p>
+          <p class="about__text">
             Four of the West’s most infamous outlaws assemble to steal a huge
             stash of gold from the most corrupt settlement of the gold rush
             towns. But not all goes to plan one is killed and the other three
@@ -46,14 +46,13 @@ export function renderModal() {
             lead... they’ve been double crossed – but by who and how?
           </p>
         </div>
-        <div class="btn_wrapper">
-          <button class="button modal_btn btn-accent">add to Watched</button>
-          <button class="button modal_btn">add to queue</button>
+        <div class="btn-wrapper">
+          <button class="button modal__btn btn-accent">add to Watched</button>
+          <button class="button modal__btn">add to queue</button>
         </div>
       </div>`;
 
-  //   refsModal.modal.insertAdjacentHTML('beforeend', markup);
-  refsModal.modalInfo.innerHTML = markup;
+  refsModal.modal__info.innerHTML = markup;
 
   function removeHidden() {
     refsModal.modal.classList.remove('hidden');
@@ -61,6 +60,12 @@ export function renderModal() {
   }
 
   removeHidden();
+
+  console.log(evt.target);
+
+  // if (evt.target.nodeName === 'LI') {
+  //   console.log(evt.target);
+  // }
 }
 
 export function removeModal() {
@@ -71,6 +76,8 @@ export function removeModal() {
     refsModal.modal.classList.add('hidden');
     refsModal.overlay.classList.add('hidden');
 
-    refsModal.modalInfo.innerHTML = '';
+    refsModal.modal__info.innerHTML = '';
   }
 }
+
+// підключення даних

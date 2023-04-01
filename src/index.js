@@ -14,5 +14,6 @@ refs.searchForm.addEventListener('submit', onSearchFormSubmit);
 
 renderMovieCard(gallery, getCardData());
 
+// модалка фільму
 refs.gallery.addEventListener('click', renderModal);
 removeModal();
