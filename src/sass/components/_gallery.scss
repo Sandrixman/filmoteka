@@ -1,11 +1,12 @@
 .movie-list {
-  display: grid;
   max-width: 1280px;
+  display: grid;
+  align-items: start;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-gap: 32px;
+  grid-gap: 20px;
   padding: 20px;
-  list-style: none;
   margin: 0;
+  list-style: none;
   @include tablet {
     padding: 60px 32px;
     grid-gap: 32px;
@@ -22,6 +23,7 @@
 
 .movie-list__item {
   width: 100%;
+  cursor: pointer;
 }
 
 .movie-list__img {
@@ -29,7 +31,18 @@
 }
 
 .movie-list__info {
+  margin-top: 12px;
+  @include desktop {
+    margin-bottom: 16;
+  }
+}
+
+.movie-list__title,
+.movie-list__text {
   font-size: 12px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  margin: 0;
 
   @include tablet {
     font-size: 16px;
@@ -39,17 +52,9 @@
     font-size: 20px;
   }
 }
-
 .movie-list__title {
-  font-family: 'Roboto';
-  font-weight: 500;
   text-transform: uppercase;
-  margin: 0;
-  margin-top: 12px;
 }
-
 .movie-list__text {
   color: #ff6b08;
-  margin: 0;
-  margin-bottom: 16px;
 }
