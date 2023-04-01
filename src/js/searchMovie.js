@@ -20,12 +20,12 @@ export function onSearchFormSubmit(evt) {
     return;
   }
   refs.gallery.innerHTML = '';
-  moviesCards = generateMoviesList(searchQuery);
+  moviesCards = generateSearchedMovies(searchQuery);
   renderMovieCard(refs.gallery, moviesCards);
   startPaginationBox(moviesCards.total_results);
 }
 
-async function generateMoviesList(query) {
+async function generateSearchedMovies(query) {
   try {
     const spinerInstance = spiner();
     const genresIdList = await downloadGenresIdList();
