@@ -12,4 +12,4 @@ const gallery = document.querySelector('.movie-list');
 
 refs.searchForm.addEventListener('submit', onSearchFormSubmit);
 
-renderMovieCard(gallery, getCardData());
+getCardData();

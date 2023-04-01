@@ -1,7 +1,7 @@
 import { getCardData } from './fetchDataForMain';
 
-export function renderMovieCard(gallery, somePromis) {
-  somePromis.then(({ card_data }) => {
+export function renderMovieCard(gallery, card_data) {
+  // somePromis.then(({ card_data }) => {
     const markup = card_data
       .map(({ fullposter_path, title, genres, release_year }) => {
         return `
@@ -15,5 +15,5 @@ export function renderMovieCard(gallery, somePromis) {
       .join('');
 
     gallery.insertAdjacentHTML('beforeend', markup);
-  });
+  // });
 }
