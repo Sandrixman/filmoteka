@@ -7,6 +7,10 @@ export const refsModal = {
 
 export function renderModal(evt) {
   // console.log('hi from modal');
+
+  const li = evt.target.closest('.movie-list__item');
+  console.log(li);
+
   markup = `
       <img
         class="modal__img"
@@ -14,19 +18,19 @@ export function renderModal(evt) {
         alt=""
       />
       <div class="movie-description">
-        <h2 class="movie-title">A FISTFUL OF LEAD</h2>
+        <h2 class="movie-title">${li.dataset.title}</h2>
         <ul class="movie-info__list">
           <li class="movie-info__item">
             <p class="info-name">Vote / Votes</p>
-            <p class="info-value">1260</p>
+            <p class="info-value votes-wrapper"><span class="vote-average">${li.dataset.vote_average}</span> / ${li.dataset.vote_count}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Popularity</p>
-            <p class="info-value">1260</p>
+            <p class="info-value">${li.dataset.popularity}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Original Title</p>
-            <p class="info-value">1260</p>
+            <p class="info-value">${li.dataset.original_title}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Genre</p>
@@ -60,12 +64,6 @@ export function renderModal(evt) {
   }
 
   removeHidden();
-
-  console.log(evt.target);
-
-  // if (evt.target.nodeName === 'LI') {
-  //   console.log(evt.target);
-  // }
 }
 
 export function removeModal() {
