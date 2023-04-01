@@ -2,23 +2,26 @@ export const refsModal = {
   modal: document.querySelector('.js-modal'),
   overlay: document.querySelector('.overlay'),
   modal__info: document.querySelector('.modal__info'),
-  markup: '',
 };
 
+refsModal.modal.addEventListener('click', function (evt) {
+  if (evt.target.nodeName === 'BUTTON') {
+    console.log(evt.target);
+  }
+});
+
 export function renderModal(evt) {
-  // console.log('hi from modal');
-
   const li = evt.target.closest('.movie-list__item');
-  console.log(li);
+  const { title } = li.dataset;
 
-  markup = `
+  const markup = `
       <img
         class="modal__img"
         src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
         alt=""
       />
       <div class="movie-description">
-        <h2 class="movie-title">${li.dataset.title}</h2>
+        <h2 class="movie-title">${title}</h2>
         <ul class="movie-info__list">
           <li class="movie-info__item">
             <p class="info-name">Vote / Votes</p>
@@ -51,7 +54,7 @@ export function renderModal(evt) {
           </p>
         </div>
         <div class="btn-wrapper">
-          <button class="button modal__btn btn-accent">add to Watched</button>
+          <button class="button modal__btn btn-accent asd">add to Watched</button>
           <button class="button modal__btn">add to queue</button>
         </div>
       </div>`;
