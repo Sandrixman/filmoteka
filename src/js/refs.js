@@ -1,3 +1,4 @@
 export default function getRefs() {
-  return null;
+  const footerModalEl = document.querySelector(".footer-modal-js");
+  return { footerModalEl };
 }
