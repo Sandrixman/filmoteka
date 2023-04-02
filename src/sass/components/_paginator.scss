@@ -1,0 +1,88 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination .tui-page-btn {
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  color: #000000;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-decoration: none;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &.tui-last {
+    background-color: #ffffff;
+  }
+  &.tui-first {
+    background-color: #ffffff;
+  }
+  &.tui-is-disabled {
+    background: transparent;
+    cursor: default;
+  }
+  &:hover,
+  &:focus {
+    background-color: #ff6b08;
+    color: #ffffff;
+    border: none;
+    outline: none;
+  }
+  &.tui-is-disabled:hover {
+    background: transparent;
+    cursor: default;
+  }
+}
+
+.pagination .tui-is-selected,
+.pagination strong {
+  background-color: #ff6b08;
+  color: #ffffff;
+}
+
+.pagination .tui-ico-last,
+.pagination .tui-ico-first,
+.pagination .tui-ico-ellip {
+  color: transparent;
+}
+
+.pagination .tui-page-btn.tui-prev {
+  @extend %hide-element;
+}
+
+.pagination .tui-page-btn.tui-next {
+  @extend %hide-element;
+}
+
+.pagination .tui-page-btn.tui-last::after {
+  content: '>';
+  background: no-repeat center url('../image/arrow-right.svg');
+  position: absolute;
+  color: transparent;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.pagination .tui-page-btn.tui-first::after {
+  content: '<';
+  background: no-repeat center url('../image/arrow-left.svg');
+  position: absolute;
+  color: transparent;
+  font-weight: 400;
+  font-size: 25px;
+}
+
+.pagination .tui-prev-is-ellip::after,
+.pagination .tui-next-is-ellip::after {
+  content: '...';
+  position: absolute;
+  color: inherit;
+  font-size: 18px;
+}
