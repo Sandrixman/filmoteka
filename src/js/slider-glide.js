@@ -38,5 +38,5 @@ export const options = {
   keyboard: true,
 };
 
-export const glide = new Glide('.glide', config);
-export const glideFooter = new Glide('.glide_footer', options);
+export const glide = new Glide('.glide', options);
+// export const glideFooter = new Glide('.glide_footer', options);

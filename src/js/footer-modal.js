@@ -1,6 +1,5 @@
 import getRefs from './refs';
-import Glide from '@glidejs/glide';
-import { glideFooter, options } from './slider-glide';
+import { glide } from './slider-glide';
 const refs = getRefs();
 
 // console.log(refs.footerBackdrop);
@@ -14,9 +13,7 @@ function onClickLink(evt) {
   refs.footerBackdrop.classList.remove('is-hidden');
   refs.footerAboutModalEl.classList.remove('is-hidden');
   document.addEventListener('keydown', onClickEscape);
-  glideFooter.destroy();
-  let glidFooter = new Glide('.glide_footer', options);
-  glidFooter.mount();
+  glide.mount();
 }
 
 function closeModal(evt) {

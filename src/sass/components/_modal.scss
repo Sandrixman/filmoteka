@@ -254,9 +254,6 @@
     right: 6px;
   }
   &__list {
-    transition: transform 400ms cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-    width: 4030px !important;
-    transform: translate3d(-620px, 0px, 0px);
     display: flex;
     // @include tablet {
     //   flex-direction: row;
@@ -266,9 +263,6 @@
     // }
   }
   &__item {
-    width: 300px;
-    margin-left: 5px;
-    margin-right: 5px;
     padding-left: 30px;
     padding-right: 30px;
     margin-top: auto;
@@ -315,6 +309,10 @@
     color: #99a1ca;
     margin-bottom: 10px;
     border-bottom: 2px solid #99a1ca;
+     @include tablet {
+      font-size: 25px;
+    margin-bottom: 15px;
+    }
   }
   &__role {
     font-family: Roboto;
@@ -325,7 +323,8 @@
     color: #e8eaee;
     margin-bottom: 10px;
     @include tablet {
-      font-size: 16px;
+      font-size: 25px;
+    margin-bottom: 15px;
     }
   }
   &__text{
@@ -337,6 +336,10 @@
     color: #76787e;
     margin-bottom: 10px;
     text-align: center;
+    @include tablet {
+      font-size: 20px;
+    margin-top: 25px;
+    }
   }
 }
 .glide__arrow{
