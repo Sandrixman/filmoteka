@@ -10,9 +10,11 @@ export function renderMovieCard(gallery, card_data) {
         popularity,
         vote_average,
         vote_count,
+        id,
       }) => {
         return `
       <li class="movie-list__item"
+          data-id="${id}"
           data-title="${title}"
           data-genres="${genres}"
           data-year="${release_year}"

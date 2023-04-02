@@ -3,7 +3,7 @@
   width: 14px;
   height: 14px;
 
-  position: absolute;
+  position: fixed;
   top: 16;
   right: 16;
 
@@ -116,6 +116,14 @@
 
 .info-value {
   font-weight: bold;
+  width: 108px;
+
+  @include tablet {
+      width: 156px;
+    }  
+    @include desktop {
+      width: 239px;
+    }
 }
 
 .votes-wrapper {
