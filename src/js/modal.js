@@ -4,11 +4,15 @@ const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
 const watchedArray = [];
 const queueArray = [];
 let data = '';
+export let movieId = '';
 
 modal.addEventListener('click', addMovie);
 
 function addMovie(evt) {
-  const { title, genres, poster, year, vote } = data.dataset;
+  const { title, genres, poster, year, vote, id } = data.dataset;
+
+  movieId = id;
+
   if (evt.target.classList.contains('add-watched')) {
     const newObject = {
       title,

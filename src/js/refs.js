@@ -1,5 +1,5 @@
 export default function getRefs() {
-  const footerModalEl = document.querySelector(".footer-modal-js");
+  const footerModalEl = document.querySelector('.footer-modal-js');
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
   const searchInput = document.querySelector('.search__input');
@@ -8,6 +8,8 @@ export default function getRefs() {
   const overlay = document.querySelector('.overlay');
   const modal__info = document.querySelector('.modal__info');
   const modalCloseBtn = document.querySelector('.close-btn');
+  const backdropTrailer = document.querySelector('.backdrop-trailer');
+  const playerDiv = document.querySelector('.player');
   return {
     searchForm,
     gallery,
@@ -17,6 +19,8 @@ export default function getRefs() {
     overlay,
     modal__info,
     modalCloseBtn,
-    footerModalEl
+    footerModalEl,
+    backdropTrailer,
+    playerDiv,
   };
 }
