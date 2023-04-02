@@ -1,10 +1,16 @@
 import getRefs from './refs';
 const refs = getRefs();
 
-console.log(refs.footerModalEl);
+refs.footerAboutModalEl.classList.add('hidden');
+// console.log(refs.footerModalEl);
 refs.footerModalEl.addEventListener("click", onClickLink);
+refs.footerCloseBtn.addEventListener("click", onClickCloseBtn);
 
 function onClickLink(evt) {
   evt.preventDefault();
-  console.log("hi")
+  refs.footerAboutModalEl.classList.remove('hidden');
+}
+
+function onClickCloseBtn(evt) {
+  refs.footerAboutModalEl.classList.add('hidden');
 }

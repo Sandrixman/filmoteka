@@ -203,3 +203,84 @@
 .hidden {
   display: none;
 }
+
+
+//! about us
+.about-modal{
+  height: 550px;
+  padding: 25px 20px;
+  border-radius: 10px;
+  overflow-y: auto;
+
+  background-color: #ffffff;
+
+  @include tablet{
+      width: 500px;
+    }
+  @include desktop {
+      width: 800px;
+    }
+  &__title {
+    font-size: 20px;
+    line-height: calc(23 / 20);
+    margin: 0;
+    text-align: center;
+  }
+  &__close-btn{
+    top: 6px;
+  right: 6px;
+  }
+  &__list{
+    padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  @include tablet{
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @include desktop {
+
+  }
+  }
+  &__item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    @include tablet{
+    width: calc((100% - 20px) / 2);
+    }
+    @include desktop {
+      width: calc((100% - 40px) / 3);
+    }
+  }
+  &__box-img{
+    
+  }
+  &__img{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  &__name{
+    font-family: Roboto;
+    font-size: 20px;
+    line-height: calc(23 / 20);
+    margin: 0;
+    text-align: center;
+    color: #ff6b08;
+  }
+  &__text{
+    font-family: Roboto;
+    font-size: 12px;
+  line-height: 1.67;
+  margin: 0;
+    font-weight: 700;
+    @include tablet{
+      font-size: 16px;
+    }
+  }
+}

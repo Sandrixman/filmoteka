@@ -1,5 +1,7 @@
 export default function getRefs() {
   const footerModalEl = document.querySelector(".footer-modal-js");
+  const footerAboutModalEl = document.querySelector(".about-modal-js");
+  const footerCloseBtn = document.querySelector(".about-modal__close-js");
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
   const searchInput = document.querySelector('.search__input');
@@ -17,6 +19,8 @@ export default function getRefs() {
     overlay,
     modal__info,
     modalCloseBtn,
-    footerModalEl
+    footerModalEl,
+    footerAboutModalEl,
+    footerCloseBtn
   };
 }
