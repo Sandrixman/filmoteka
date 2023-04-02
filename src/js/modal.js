@@ -1,14 +1,10 @@
-export const refsModal = {
-  modal: document.querySelector('.js-modal'),
-  overlay: document.querySelector('.overlay'),
-  modal__info: document.querySelector('.modal__info'),
-};
+import getRefs from './refs ';
 
-refsModal.modal.addEventListener('click', function (evt) {
+const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
+
+modal.addEventListener('click', function (evt) {
   if (evt.target.nodeName === 'BUTTON') {
     console.log(evt.target.dataset.title);
-
-    console.log(evt.target.closest('.movie-description'));
   }
 });
 
@@ -61,26 +57,19 @@ export function renderModal(evt) {
         </div>
       </div>`;
 
-  refsModal.modal__info.innerHTML = markup;
+  modal__info.innerHTML = markup;
 
-  function removeHidden() {
-    refsModal.modal.classList.remove('hidden');
-    refsModal.overlay.classList.remove('hidden');
-  }
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
 
-  removeHidden();
+  removeModal();
 }
 
 export function removeModal() {
-  const closeBtn = document.querySelector('.close-btn');
-  closeBtn.addEventListener('click', addHidden);
+  modalCloseBtn.addEventListener('click', addHidden);
 
   function addHidden() {
-    refsModal.modal.classList.add('hidden');
-    refsModal.overlay.classList.add('hidden');
-
-    refsModal.modal__info.innerHTML = '';
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
   }
 }
-
-// підключення даних

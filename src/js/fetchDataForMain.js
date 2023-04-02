@@ -34,12 +34,11 @@ export function createGenres(genre_ids, genresIdList) {
         genresIdList
       )}, Other`;
   }
-}
 
-export function findGenreByID(id, genresIdList) {
-  const genre = genresIdList.find(el => el.id === id);
-  // return genre?.name || '';
-  return genre.name;
+  function findGenreByID(id, genresIdList) {
+    const genre = genresIdList.find(el => el.id === id);
+    return genre.name;
+  }
 }
 
 export function cardListGenerator(genresList, cards, total_results) {
@@ -55,29 +54,30 @@ export function cardListGenerator(genresList, cards, total_results) {
       }
     ),
     total_results,
-  }
+  };
 }
 
 export async function getCardData() {
   const trendingUrl = '/trending/movie/day';
   try {
     const spinerInstance = spiner();
-    const { results, total_results } = await tmdbAPIService.fetchSearch(trendingUrl).then(
-      ({ data }) => {
+    const { results, total_results } = await tmdbAPIService
+      .fetchSearch(trendingUrl)
+      .then(({ data }) => {
         if (!data) Notify.failure('Жодного фільма в тренді за день!');
         return data;
-      }
-    ).finally(() => spinerInstance.stop());
+      })
+      .finally(() => spinerInstance.stop());
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
 
     const movies = cardListGenerator(genresIdList, results, total_results);
 
     gallery.innerHTML = '';
-    paginationDiv.style.display="none";
+    paginationDiv.style.display = 'none';
     renderMovieCard(gallery, movies.card_data);
-    if (pagination.getCurrentPage() === 0) pagination.reset(movies.total_results);
-    paginationDiv.style.display="flex";
-
+    if (pagination.getCurrentPage() === 0)
+      pagination.reset(movies.total_results);
+    paginationDiv.style.display = 'flex';
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }
