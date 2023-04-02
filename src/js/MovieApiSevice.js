@@ -27,6 +27,11 @@ export default class TmdbAPIService {
     return data;
   }
 
+  async fetchTrailer(id) {
+    const { data } = await axios(`${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`);
+    return data.results[0].key;
+  }
+
   get page() {
     return this.curPage;
   }

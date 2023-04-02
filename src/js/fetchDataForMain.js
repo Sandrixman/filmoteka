@@ -4,12 +4,13 @@ import { renderMovieCard } from './renderMovieCard';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './paginator';
+import dummy from '../image/dummy-poster.jpg';
 import spiner from './spiner';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const tmdbAPIService = new TmdbAPIService();
 const pagination = new Pagination('pagination', options);
-const refs = getRefs();
-const trendingUrl = '/trending/movie/day';
+const { gallery, paginationDiv } = getRefs();
 
 export function createGenres(genre_ids, genresIdList) {
   switch (genre_ids.length) {
@@ -33,47 +34,77 @@ export function createGenres(genre_ids, genresIdList) {
         genresIdList
       )}, Other`;
   }
-}
 
-export function findGenreByID(id, genresIdList) {
-  const genre = genresIdList.find(el => el.id === id);
-  // return genre?.name || '';
-  return genre.name;
-}
-
-export async function getCardData() {
-  try {
-    const spinerInstance = spiner();
-    const genresIdList = await tmdbAPIService.downloadGenresIdList();
-    const { results, total_results } = await tmdbAPIService.fetchSearch(trendingUrl).then(
-      ({ data }) => {
-        if (!data) console.log('Жодного фільма в тренді за день!');
-        return data;
-      }
-    ).finally(() => spinerInstance.stop());
-    const movies = {
-      card_data: results.map(
-        ({ title, poster_path, genre_ids, id, release_date }) => {
-          const fullposter_path = poster_path
-            ? `https://image.tmdb.org/t/p/w500${poster_path}`
-            : dummy;
-          const genres = createGenres(genre_ids, genresIdList);
-          const release_year = release_date.slice(0, 4);
-          return { fullposter_path, title, genres, release_year, id };
-        }
-      ),
-      total_results,
-    };
-
-    refs.gallery.innerHTML = '';
-    renderMovieCard(refs.gallery, movies.card_data);
-    if (pagination.getCurrentPage() === 0) pagination.reset(movies.total_results);
-  } catch (error) {
-    console.log('Помилка при завантаженні');
+  function findGenreByID(id, genresIdList) {
+    const genre = genresIdList.find(el => el.id === id);
+    return genre.name;
   }
 }
 
-pagination.on('afterMove', event => {
+export function cardListGenerator(genresList, cards, total_results) {
+  return {
+    card_data: cards.map(
+      ({
+        title,
+        poster_path,
+        genre_ids,
+        id,
+        release_date,
+        overview,
+        popularity,
+        vote_average,
+        vote_count,
+      }) => {
+        const fullposter_path = poster_path
+          ? `https://image.tmdb.org/t/p/w500${poster_path}`
+          : dummy;
+        const genres = createGenres(genre_ids, genresList);
+        const release_year = release_date.slice(0, 4) || 'No year';
+        return {
+          fullposter_path,
+          title,
+          genres,
+          release_year,
+          id,
+          overview,
+          popularity,
+          vote_average,
+          vote_count,
+        };
+      }
+    ),
+    total_results,
+  };
+}
+
+export async function getCardData() {
+  const trendingUrl = '/trending/movie/day';
+  try {
+    const spinerInstance = spiner();
+    const { results, total_results } = await tmdbAPIService
+      .fetchSearch(trendingUrl)
+      .then(({ data }) => {
+        if (!data) Notify.failure('Жодного фільма в тренді за день!');
+        return data;
+      })
+      .finally(() => spinerInstance.stop());
+    const genresIdList = await tmdbAPIService.downloadGenresIdList();
+
+    const movies = cardListGenerator(genresIdList, results, total_results);
+
+    gallery.innerHTML = '';
+    paginationDiv.style.display = 'none';
+
+    renderMovieCard(gallery, movies.card_data);
+    if (pagination.getCurrentPage() === 0)
+      pagination.reset(movies.total_results);
+    paginationDiv.style.display = 'flex';
+  } catch (error) {
+    Notify.failure('Error happend while the resource loading!');
+  }
+}
+
+pagination.on('beforeMove', event => {
   tmdbAPIService.page = event.page;
   getCardData();
 });

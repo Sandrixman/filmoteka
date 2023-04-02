@@ -1,23 +1,45 @@
-export const refsModal = {
-  modal: document.querySelector('.js-modal'),
-  overlay: document.querySelector('.overlay'),
-  modal__info: document.querySelector('.modal__info'),
-};
+import getRefs from './refs ';
 
-refsModal.modal.addEventListener('click', function (evt) {
-  if (evt.target.nodeName === 'BUTTON') {
-    console.log(evt.target);
+const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
+const watchedArray = [];
+const queueArray = [];
+let data = '';
+
+modal.addEventListener('click', addMovie);
+
+function addMovie(evt) {
+  const { title, genres, poster, year, vote } = data.dataset;
+  if (evt.target.classList.contains('add-watched')) {
+    const newObject = {
+      title,
+      genres,
+      poster,
+      year,
+      vote,
+    };
+    watchedArray.push(newObject);
   }
-});
+  if (evt.target.classList.contains('add-queue')) {
+    const newObject = {
+      title,
+      genres,
+      poster,
+      year,
+      vote,
+    };
+    queueArray.push(newObject);
+  }
+}
 
 export function renderModal(evt) {
-  const li = evt.target.closest('.movie-list__item');
-  const { title } = li.dataset;
+  data = evt.target.closest('.movie-list__item');
+  const { title, genres, poster, popularity, about, votes, vote } =
+    data.dataset;
 
   const markup = `
       <img
         class="modal__img"
-        src="https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_square.jpg"
+        src="${poster}"
         alt=""
       />
       <div class="movie-description">
@@ -25,60 +47,44 @@ export function renderModal(evt) {
         <ul class="movie-info__list">
           <li class="movie-info__item">
             <p class="info-name">Vote / Votes</p>
-            <p class="info-value votes-wrapper"><span class="vote-average">${li.dataset.vote_average}</span> / ${li.dataset.vote_count}</p>
+            <p class="info-value votes-wrapper"><span class="vote-average">${vote}</span> / ${votes}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Popularity</p>
-            <p class="info-value">${li.dataset.popularity}</p>
+            <p class="info-value">${popularity}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Original Title</p>
-            <p class="info-value">${li.dataset.original_title}</p>
+            <p class="info-value">${title}</p>
           </li>
           <li class="movie-info__item">
             <p class="info-name">Genre</p>
-            <p class="info-value">1260</p>
+            <p class="info-value">${genres}</p>
           </li>
         </ul>
         <div class="movie-about">
           <p class="about__title">About</p>
-          <p class="about__text">
-            Four of the West’s most infamous outlaws assemble to steal a huge
-            stash of gold from the most corrupt settlement of the gold rush
-            towns. But not all goes to plan one is killed and the other three
-            escapes with bags of gold hide out in the abandoned gold mine where
-            they happen across another gang of three – who themselves were
-            planning to hit the very same bank! As tensions rise, things go from
-            bad to worse as they realise the bags of gold are filled with
-            lead... they’ve been double crossed – but by who and how?
-          </p>
+          <p class="about__text">${about}</p>
         </div>
         <div class="btn-wrapper">
-          <button class="button modal__btn btn-accent asd">add to Watched</button>
-          <button class="button modal__btn">add to queue</button>
+          <button class="modal__btn add-watched btn-accent">add to Watched</button>
+          <button class="modal__btn add-queue">add to queue</button>
         </div>
       </div>`;
 
-  refsModal.modal__info.innerHTML = markup;
+  modal__info.innerHTML = markup;
 
-  function removeHidden() {
-    refsModal.modal.classList.remove('hidden');
-    refsModal.overlay.classList.remove('hidden');
-  }
+  modal.classList.remove('hidden');
+  overlay.classList.remove('hidden');
 
-  removeHidden();
+  removeModal();
 }
 
 export function removeModal() {
-  const closeBtn = document.querySelector('.close-btn');
-  closeBtn.addEventListener('click', addHidden);
+  modalCloseBtn.addEventListener('click', addHidden);
 
   function addHidden() {
-    refsModal.modal.classList.add('hidden');
-    refsModal.overlay.classList.add('hidden');
-
-    refsModal.modal__info.innerHTML = '';
+    modal.classList.add('hidden');
+    overlay.classList.add('hidden');
   }
 }
-
-// підключення даних

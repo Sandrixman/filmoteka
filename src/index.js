@@ -1,22 +1,21 @@
 import './css/main.min.css';
+import MovieApiSevice from './js/MovieApiSevice';
+import renderMovieCard from './js/renderMovieCard';
 import { getCardData } from './js/fetchDataForMain';
-import { renderMovieCard } from './js/renderMovieCard';
 import { onSearchFormSubmit } from './js/searchMovie';
-import { refsModal, renderModal, removeModal } from './js/modal';
+import { renderModal } from './js/modal';
+import { showTrailer, hideTrailer } from './js/trailer';
+import modalFooter from './js/footer-modal';
+import getRefs from './js/refs';
 import spiner from './js/spiner';
-import { showTrailer, hideTrailer, refsTrailer } from './js/trailer';
 import getRefs from './js/refs ';
 
-const { searchForm, gallery } = getRefs();
+const { searchForm, gallery, modal, backdropTrailer } = getRefs();
 
-// const gallery = document.querySelector('.movie-list');
-
-searchForm.addEventListener('submit', onSearchFormSubmit);
 getCardData(); //рендерінг головної сторінки
 
-// модалка фільму
-gallery.addEventListener('click', renderModal);
-removeModal();
+modal.addEventListener('click', showTrailer);
+backdropTrailer.addEventListener('click', hideTrailer);
 
-refsTrailer.modal.addEventListener('click', showTrailer);
-refsTrailer.backdropTrailer.addEventListener('click', hideTrailer);
+searchForm.addEventListener('submit', onSearchFormSubmit); // пошук фільму
+gallery.addEventListener('click', renderModal); // модалка фільму

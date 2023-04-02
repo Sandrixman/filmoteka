@@ -1,15 +1,15 @@
-import { createGenres, getCardData } from './fetchDataForMain';
-import TmdbAPIService from './MovieApiSevice';
-import { renderMovieCard } from './renderMovieCard';
-import getRefs from './refs';
-import dummy from '../image/dummy-poster.jpg';
-import spiner from './spiner';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { options } from './paginator';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const refs = getRefs();
+import TmdbAPIService from './MovieApiSevice';
+import { cardListGenerator } from './fetchDataForMain';
+import { renderMovieCard } from './renderMovieCard';
+import { options } from './paginator';
+import getRefs from './refs';
+import spiner from './spiner';
+
+const { searchForm, gallery, searchInput, paginationDiv } = getRefs();
 const tmdbAPIService = new TmdbAPIService();
 const pagination = new Pagination('pagination', options);
 
@@ -23,6 +23,7 @@ export function onSearchFormSubmit(evt) {
   }
 
   generateSearchedMovies(searchQuery);
+
   pagination.on('beforeMove', event => {
     tmdbAPIService.page = event.page;
     generateSearchedMovies(searchQuery);
@@ -32,6 +33,13 @@ export function onSearchFormSubmit(evt) {
 async function generateSearchedMovies(query) {
   try {
     const spinerInstance = spiner();
+    const { results, total_results } = await tmdbAPIService
+      .querySearch(query)
+      .finally(() => spinerInstance.stop());
+    if (!total_results) {
+      errorMessage();
+      return;
+    }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
     const { results, total_results } = await tmdbAPIService
       .querySearch(query)
@@ -41,19 +49,8 @@ async function generateSearchedMovies(query) {
       getCardData().finally(() => spinerInstance.stop());
     }
 
-    const movies = {
-      card_data: results.map(
-        ({ title, poster_path, genre_ids, id, release_date }) => {
-          const fullposter_path = poster_path
-            ? `https://image.tmdb.org/t/p/w500${poster_path}`
-            : dummy;
-          const genres = createGenres(genre_ids, genresIdList);
-          const release_year = release_date.slice(0, 4);
-          return { fullposter_path, title, genres, release_year, id };
-        }
-      ),
-      total_results,
-    };
+    paginationDiv.style.display = 'none';
+    gallery.innerHTML = '';
 
     refs.gallery.innerHTML = '';
     renderMovieCard(refs.gallery, movies.card_data);
@@ -72,6 +69,6 @@ function errorMessage() {
   const message = document.querySelector('.error_message');
   setTimeout(() => {
     message.remove();
-    refs.searchInput.value = '';
+    searchInput.value = '';
   }, 3000);
 }
