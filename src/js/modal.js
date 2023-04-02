@@ -81,14 +81,30 @@ export function renderModal(evt) {
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 
+  // ховаємо модалку фільму по Escape
+
+  document.addEventListener('keydown', escapePressed);
+
   removeModal();
 }
 
-export function removeModal() {
+function removeModal() {
   modalCloseBtn.addEventListener('click', addHidden);
+  overlay.addEventListener('click', addHidden);
+}
 
-  function addHidden() {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
+function addHidden() {
+  modal.classList.add('hidden');
+  overlay.classList.add('hidden');
+
+  document.removeEventListener('keydown', escapePressed);
+}
+
+function escapePressed(event) {
+  event.preventDefault();
+
+  if (event.code === 'Escape') {
+    console.log('Ecsape was pressed');
+    addHidden();
   }
 }
