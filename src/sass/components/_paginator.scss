@@ -21,14 +21,12 @@
   &.tui-last {
     background-color: #ffffff;
   }
-  &.tui-next {
-    background-color: transparent;
-  }
-  &.tui-prev {
-    background-color: transparent;
-  }
   &.tui-first {
     background-color: #ffffff;
+  }
+  &.tui-is-disabled {
+    background: transparent;
+    cursor: default;
   }
   &:hover,
   &:focus {
@@ -36,6 +34,10 @@
     color: #ffffff;
     border: none;
     outline: none;
+  }
+  &.tui-is-disabled:hover {
+    background: transparent;
+    cursor: default;
   }
 }
 
