@@ -33,11 +33,13 @@ async function generateSearchedMovies(query) {
   try {
     const spinerInstance = spiner();
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
-    const { results, total_results } = await tmdbAPIService.querySearch(query).finally(() => spinerInstance.stop());
+    const { results, total_results } = await tmdbAPIService
+      .querySearch(query)
+      .finally(() => spinerInstance.stop());
     if (!results.length) {
       errorMessage();
       getCardData().finally(() => spinerInstance.stop());
-    };
+    }
 
     const movies = {
       card_data: results.map(
@@ -55,19 +57,21 @@ async function generateSearchedMovies(query) {
 
     refs.gallery.innerHTML = '';
     renderMovieCard(refs.gallery, movies.card_data);
-    if (pagination.getCurrentPage() === 0) pagination.reset(movies.total_results);
-
+    if (pagination.getCurrentPage() === 0)
+      pagination.reset(movies.total_results);
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }
 }
 
 function errorMessage() {
-  refs.searchForm.insertAdjacentHTML('beforeEnd', `<p class="error_message">Search result not successful. Enter the correct movie name and try again</p>`);
+  refs.searchForm.insertAdjacentHTML(
+    'beforeEnd',
+    `<p class="error_message">Search result not successful. Enter the correct movie name and try again</p>`
+  );
   const message = document.querySelector('.error_message');
   setTimeout(() => {
     message.remove();
     refs.searchInput.value = '';
   }, 3000);
 }
-

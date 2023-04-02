@@ -4,7 +4,7 @@ import { renderMovieCard } from './js/renderMovieCard';
 import { onSearchFormSubmit } from './js/searchMovie';
 import { refsModal, renderModal, removeModal } from './js/modal';
 import spiner from './js/spiner';
-// import './js/trailer';
+import { showTrailer, hideTrailer, refsTrailer } from './js/trailer';
 import getRefs from './js/refs ';
 
 const { searchForm, gallery } = getRefs();
@@ -17,3 +17,6 @@ getCardData(); //рендерінг головної сторінки
 // модалка фільму
 gallery.addEventListener('click', renderModal);
 removeModal();
+
+refsTrailer.modal.addEventListener('click', showTrailer);
+refsTrailer.backdropTrailer.addEventListener('click', hideTrailer);

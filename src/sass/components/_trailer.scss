@@ -7,10 +7,51 @@
   transition-property: opacity, visibility;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 666;
 }
 
 .is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+.player-container {
+  width: 100%;
+  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: black;
+}
+
+.player iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cancel-btn {
+  position: absolute;
+  top: 50;
+  right: 50;
+  fill: #979797;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  fill: #ffffff;
 }

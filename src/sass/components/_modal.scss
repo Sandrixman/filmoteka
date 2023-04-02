@@ -3,7 +3,7 @@
   width: 14px;
   height: 14px;
 
-  position: absolute;
+  position: fixed;
   top: 16;
   right: 16;
 
@@ -118,17 +118,17 @@
   font-weight: bold;
 }
 
-.votes-wrapper{
-  display: flex;  
+.votes-wrapper {
+  display: flex;
 }
 
-.vote-average{
+.vote-average {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 4px;
   margin-right: 2px;
-  background-color: #FF6B01;
+  background-color: #ff6b01;
   color: #fff;
   border-radius: 5px;
 }
