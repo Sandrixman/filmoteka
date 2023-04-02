@@ -13,32 +13,17 @@ const pagination = new Pagination('pagination', options);
 const { gallery, paginationDiv } = getRefs();
 
 export function createGenres(genre_ids, genresIdList) {
-  switch (genre_ids.length) {
-    case 0:
-      return 'Genre not defined';
-    case 1:
-      return findGenreByID(genre_ids[0], genresIdList);
-    case 2:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}`;
-    case 3:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}, ${findGenreByID(genre_ids[2], genresIdList)}`;
-    default:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}, Other`;
+  const genreNames = genre_ids.map(id => findGenreByID(id, genresIdList));
+  if (genreNames.length <= 3) {
+    return genreNames.join(', ');
+  } else {
+    return `${genreNames.slice(0, 2).join(', ')}, Other`;
   }
+}
 
-  function findGenreByID(id, genresIdList) {
-    const genre = genresIdList.find(el => el.id === id);
-    return genre.name;
-  }
+function findGenreByID(id, genresIdList) {
+  const genre = genresIdList.find(el => el.id === id);
+  return genre.name;
 }
 
 export function cardListGenerator(genresList, cards, total_results) {
@@ -60,6 +45,8 @@ export function cardListGenerator(genresList, cards, total_results) {
           : dummy;
         const genres = createGenres(genre_ids, genresList);
         const release_year = release_date.slice(0, 4) || 'No year';
+        popularity = popularity.toFixed(1);
+        vote_average = vote_average.toFixed(1)
         return {
           fullposter_path,
           title,

@@ -17,8 +17,8 @@ export function renderMovieCard(gallery, card_data) {
           data-genres="${genres}"
           data-year="${release_year}"
           data-poster="${fullposter_path}"
-          data-popularity="${popularity.toFixed(1)}"
-          data-vote="${vote_average.toFixed(1)}"
+          data-popularity="${popularity}"
+          data-vote="${vote_average}"
           data-votes="${vote_count}"
           data-about="${overview}">
         <img class="movie-list__img" src=${fullposter_path} alt=${title}>

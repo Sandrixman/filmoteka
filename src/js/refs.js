@@ -8,6 +8,8 @@ export default function getRefs() {
   const overlay = document.querySelector('.overlay');
   const modal__info = document.querySelector('.modal__info');
   const modalCloseBtn = document.querySelector('.close-btn');
+  const queueBtn = document.querySelector('.queue__button');
+  const watchedBtn = document.querySelector('.watched__button');
   return {
     searchForm,
     gallery,
@@ -17,6 +19,8 @@ export default function getRefs() {
     overlay,
     modal__info,
     modalCloseBtn,
-    footerModalEl
+    footerModalEl,
+    queueBtn,
+    watchedBtn,
   };
 }
