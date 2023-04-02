@@ -32,28 +32,33 @@ export function onSearchFormSubmit(evt) {
 async function generateSearchedMovies(query) {
   try {
     const spinerInstance = spiner();
-    const { results, total_results } = await tmdbAPIService.querySearch(query).finally(() => spinerInstance.stop());
+    const { results, total_results } = await tmdbAPIService
+      .querySearch(query)
+      .finally(() => spinerInstance.stop());
     if (!total_results) {
       errorMessage();
       return;
-    };
+    }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
     const movies = cardListGenerator(genresIdList, results, total_results);
 
-    paginationDiv.style.display="none";
+    paginationDiv.style.display = 'none';
     gallery.innerHTML = '';
+
     renderMovieCard(gallery, movies.card_data);
-    if (pagination.getCurrentPage() === 0) pagination.reset(movies.total_results);
-    paginationDiv.style.display="flex";
-
-
+    if (pagination.getCurrentPage() === 0)
+      pagination.reset(movies.total_results);
+    paginationDiv.style.display = 'flex';
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }
 }
 
 function errorMessage() {
-  searchForm.insertAdjacentHTML('beforeEnd', `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`);
+  searchForm.insertAdjacentHTML(
+    'beforeEnd',
+    `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`
+  );
   const message = document.querySelector('.error-message');
   setTimeout(() => {
     message.remove();

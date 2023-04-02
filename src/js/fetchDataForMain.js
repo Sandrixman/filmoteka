@@ -44,13 +44,33 @@ export function createGenres(genre_ids, genresIdList) {
 export function cardListGenerator(genresList, cards, total_results) {
   return {
     card_data: cards.map(
-      ({ title, poster_path, genre_ids, id, release_date }) => {
+      ({
+        title,
+        poster_path,
+        genre_ids,
+        id,
+        release_date,
+        overview,
+        popularity,
+        vote_average,
+        vote_count,
+      }) => {
         const fullposter_path = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : dummy;
         const genres = createGenres(genre_ids, genresList);
         const release_year = release_date.slice(0, 4) || 'No year';
-        return { fullposter_path, title, genres, release_year, id };
+        return {
+          fullposter_path,
+          title,
+          genres,
+          release_year,
+          id,
+          overview,
+          popularity,
+          vote_average,
+          vote_count,
+        };
       }
     ),
     total_results,
@@ -74,6 +94,7 @@ export async function getCardData() {
 
     gallery.innerHTML = '';
     paginationDiv.style.display = 'none';
+
     renderMovieCard(gallery, movies.card_data);
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
