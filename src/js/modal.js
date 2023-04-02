@@ -82,6 +82,7 @@ export function renderModal(evt) {
 
 export function removeModal() {
   modalCloseBtn.addEventListener('click', addHidden);
+  overlay.addEventListener('click', addHidden);
 
   function addHidden() {
     modal.classList.add('hidden');
