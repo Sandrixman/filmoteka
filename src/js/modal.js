@@ -6,13 +6,15 @@ export const refsModal = {
 
 refsModal.modal.addEventListener('click', function (evt) {
   if (evt.target.nodeName === 'BUTTON') {
-    console.log(evt.target);
+    console.log(evt.target.dataset.title);
+
+    console.log(evt.target.closest('.movie-description'));
   }
 });
 
 export function renderModal(evt) {
   const li = evt.target.closest('.movie-list__item');
-  const { title } = li.dataset;
+  const { title, genres } = li.dataset;
 
   const markup = `
       <img
@@ -37,7 +39,7 @@ export function renderModal(evt) {
           </li>
           <li class="movie-info__item">
             <p class="info-name">Genre</p>
-            <p class="info-value">1260</p>
+            <p class="info-value">${genres}</p>
           </li>
         </ul>
         <div class="movie-about">
