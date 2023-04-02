@@ -11,9 +11,11 @@ export let movieId = '';
 modal.addEventListener('click', onModalBtnClick);
 
 function onModalBtnClick(evt) {
-  const { title, genres, poster, year, vote, votes, about, popularity } = data.dataset;
+  const { title, genres, poster, year, vote, votes, about, popularity, id } = data.dataset;
+  movieId = id;
   if (evt.target.classList.contains('add-watched')) {
     const newObject = {
+      id,
       fullposter_path: poster,
       title,
       genres,
@@ -33,7 +35,7 @@ function onModalBtnClick(evt) {
   }
 
   if (evt.target.classList.contains('delete-watched')) {
-    watchedArray = watchedArray.filter(item => item.title !== title);
+    watchedArray = watchedArray.filter(item => item.id !== id);
 
     saveToWatched(watchedArray);
     evt.target.classList.add("add-watched");
@@ -43,6 +45,7 @@ function onModalBtnClick(evt) {
   }
   if (evt.target.classList.contains('add-queue')) {
     const newObject = {
+      id,
       fullposter_path: poster,
       title,
       genres,
@@ -62,7 +65,7 @@ function onModalBtnClick(evt) {
   }
 
   if (evt.target.classList.contains('delete-queue')) {
-    queueArray = queueArray.filter(item => item.title !== title);
+    queueArray = queueArray.filter(item => item.id !== id);
 
     saveToQueue(queueArray);
     evt.target.classList.add("add-queue");
@@ -75,17 +78,16 @@ function onModalBtnClick(evt) {
 
 export function renderModal(evt) {
   data = evt.target.closest('.movie-list__item');
-  const { title, genres, poster, popularity, about, votes, vote } =
+  const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
 
   let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
-  console.log(queueArray.filter(item => item.title === title));
-  if (queueArray.filter(item => item.title === title).length) {
+  if (queueArray.filter(item => item.id === id).length) {
     queueBtnMarkup = 'class="modal__btn delete-queue btn-accent">Delete from queue';
   }
 
   let watchedBtnMarkup = 'class="modal__btn add-watched btn-accent">add to Watched';
-  if (watchedArray.filter(item => item.title === title).length) {
+  if (watchedArray.filter(item => item.id === id).length) {
     watchedBtnMarkup = 'class="modal__btn delete-watched btn-accent">Delete from Watched';
   }
 
