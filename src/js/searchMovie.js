@@ -1,13 +1,12 @@
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
-import TmdbAPIService from './MovieApiSevice';
 import { cardListGenerator } from './fetchDataForMain';
+import TmdbAPIService from './MovieApiSevice';
 import { renderMovieCard } from './renderMovieCard';
-import { options } from './paginator';
 import getRefs from './refs';
 import spiner from './spiner';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { options } from './paginator';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 
 const { searchForm, gallery, searchInput, paginationDiv } = getRefs();
 const tmdbAPIService = new TmdbAPIService();
@@ -41,32 +40,26 @@ async function generateSearchedMovies(query) {
       return;
     }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
-    const { results, total_results } = await tmdbAPIService
-      .querySearch(query)
-      .finally(() => spinerInstance.stop());
-    if (!results.length) {
-      errorMessage();
-      getCardData().finally(() => spinerInstance.stop());
-    }
+    const movies = cardListGenerator(genresIdList, results, total_results);
 
     paginationDiv.style.display = 'none';
     gallery.innerHTML = '';
 
-    refs.gallery.innerHTML = '';
-    renderMovieCard(refs.gallery, movies.card_data);
+    renderMovieCard(gallery, movies.card_data);
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
+    paginationDiv.style.display = 'flex';
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }
 }
 
 function errorMessage() {
-  refs.searchForm.insertAdjacentHTML(
+  searchForm.insertAdjacentHTML(
     'beforeEnd',
-    `<p class="error_message">Search result not successful. Enter the correct movie name and try again</p>`
+    `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`
   );
-  const message = document.querySelector('.error_message');
+  const message = document.querySelector('.error-message');
   setTimeout(() => {
     message.remove();
     searchInput.value = '';
