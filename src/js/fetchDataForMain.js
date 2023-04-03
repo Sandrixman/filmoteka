@@ -13,44 +13,51 @@ const pagination = new Pagination('pagination', options);
 const { gallery, paginationDiv } = getRefs();
 
 export function createGenres(genre_ids, genresIdList) {
-  switch (genre_ids.length) {
-    case 0:
-      return 'Genre not defined';
-    case 1:
-      return findGenreByID(genre_ids[0], genresIdList);
-    case 2:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}`;
-    case 3:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}, ${findGenreByID(genre_ids[2], genresIdList)}`;
-    default:
-      return `${findGenreByID(genre_ids[0], genresIdList)}, ${findGenreByID(
-        genre_ids[1],
-        genresIdList
-      )}, Other`;
+  const genreNames = genre_ids.map(id => findGenreByID(id, genresIdList));
+  if (genreNames.length <= 3) {
+    return genreNames.join(', ');
+  } else {
+    return `${genreNames.slice(0, 2).join(', ')}, Other`;
   }
+}
 
-  function findGenreByID(id, genresIdList) {
-    const genre = genresIdList.find(el => el.id === id);
-    return genre.name;
-  }
+function findGenreByID(id, genresIdList) {
+  const genre = genresIdList.find(el => el.id === id);
+  return genre.name;
 }
 
 export function cardListGenerator(genresList, cards, total_results) {
   return {
     card_data: cards.map(
-      ({ title, poster_path, genre_ids, id, release_date }) => {
+      ({
+        title,
+        poster_path,
+        genre_ids,
+        id,
+        release_date,
+        overview,
+        popularity,
+        vote_average,
+        vote_count,
+      }) => {
         const fullposter_path = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : dummy;
         const genres = createGenres(genre_ids, genresList);
         const release_year = release_date.slice(0, 4) || 'No year';
-        return { fullposter_path, title, genres, release_year, id };
+        popularity = popularity.toFixed(1);
+        vote_average = vote_average.toFixed(1)
+        return {
+          fullposter_path,
+          title,
+          genres,
+          release_year,
+          id,
+          overview,
+          popularity,
+          vote_average,
+          vote_count,
+        };
       }
     ),
     total_results,
@@ -74,6 +81,7 @@ export async function getCardData() {
 
     gallery.innerHTML = '';
     paginationDiv.style.display = 'none';
+
     renderMovieCard(gallery, movies.card_data);
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);

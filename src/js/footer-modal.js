@@ -24,6 +24,11 @@ function closeModal(evt) {
   document.removeEventListener('keydown', onClickEscape);
 }
 
+function onClickLink(evt) {
+  evt.preventDefault();
+  console.log('hi');
+}
+
 function onClickEscape(evt) {
   if (evt.key === 'Escape') {
     closeModal();

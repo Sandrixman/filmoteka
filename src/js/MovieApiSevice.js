@@ -9,7 +9,9 @@ export default class TmdbAPIService {
   }
 
   async downloadGenresIdList() {
-    const { data } = await axios(`${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`);
+    const { data } = await axios(
+      `${this.BASE_URL}genre/movie/list?api_key=${this.API_KEY}`
+    );
     return data.genres;
   }
 
@@ -28,8 +30,10 @@ export default class TmdbAPIService {
   }
 
   async fetchTrailer(id) {
-    const { data } = await axios(`${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`);
-    return data.results[0].key;
+    const { data } = await axios(
+      `${this.BASE_URL}movie/${id}/videos?api_key=${this.API_KEY}`
+    );
+    return data;
   }
 
   get page() {
