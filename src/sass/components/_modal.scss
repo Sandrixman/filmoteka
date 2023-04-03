@@ -69,14 +69,12 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 45%;
+  left: 45%;
   background: #ffffff;
-  transform-origin: center;
   transition: transform 0.3s ease-in-out;
   &:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
   }
 }
 
@@ -230,8 +228,8 @@
 
 .hidden {
   opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  visibility: hidden;
+  pointer-events: none;
   display: none;
 }
 
@@ -255,7 +253,7 @@
   visibility: hidden;
   pointer-events: none;
 }
-body.modal-open{
+body.modal-open {
   overflow: hidden;
 }
 
@@ -325,7 +323,7 @@ body.modal-open{
     border-radius: 50%;
     object-fit: cover;
   }
-  &__card{
+  &__card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -337,13 +335,13 @@ body.modal-open{
     font-size: 18px;
     font-weight: 600;
     line-height: 1.15;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     color: #99a1ca;
     margin-bottom: 10px;
     border-bottom: 2px solid #99a1ca;
-     @include tablet {
+    @include tablet {
       font-size: 25px;
-    margin-bottom: 15px;
+      margin-bottom: 15px;
     }
   }
   &__role {
@@ -351,30 +349,30 @@ body.modal-open{
     font-size: 18px;
     font-weight: 400;
     line-height: 1.15;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     color: #e8eaee;
     margin-bottom: 10px;
     @include tablet {
       font-size: 25px;
-    margin-bottom: 15px;
+      margin-bottom: 15px;
     }
   }
-  &__text{
+  &__text {
     font-family: Roboto;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.15;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     color: #76787e;
     margin-bottom: 10px;
     text-align: center;
     @include tablet {
       font-size: 20px;
-    margin-top: 25px;
+      margin-top: 25px;
     }
   }
 }
-.glide__arrow{
+.glide__arrow {
   position: absolute;
   display: block;
   top: 50%;
@@ -383,49 +381,51 @@ body.modal-open{
   text-transform: uppercase;
   padding: 9px 12px;
   background-color: initial;
-  border: 2px solid hsla(0,0%,100%,.5);
+  border: 2px solid hsla(0, 0%, 100%, 0.5);
   border-radius: 4px;
-  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,.1);
-  text-shadow: 0 0.25em 0.5em rgba(0,0,0,.1);
+  box-shadow: 0 0.25em 0.5em 0 rgba(0, 0, 0, 0.1);
+  text-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.1);
   opacity: 1;
   cursor: pointer;
-  transition: opacity .15s ease,border .3s ease-in-out;
+  transition: opacity 0.15s ease, border 0.3s ease-in-out;
   transform: translateY(-50%);
   line-height: 1;
 }
-div.glide{
+div.glide {
   cursor: grab;
 }
 
-.glide__track{
+.glide__track {
   overflow: hidden;
 }
-.close-button{
+.close-button {
   position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #99a1ca;
-    color: #99a1ca;
-    top: 0;
-    right: 0;
-    background-color: initial;
-    border-radius: 50%;
-    margin-top: 8px;
-    margin-right: 8px;
-    transform: scale(1);
-    transition: border-color .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1),color .25s cubic-bezier(.4,0,.2,1);
-    &:hover,
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #99a1ca;
+  color: #99a1ca;
+  top: 0;
+  right: 0;
+  background-color: initial;
+  border-radius: 50%;
+  margin-top: 8px;
+  margin-right: 8px;
+  transform: scale(1);
+  transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
   &:focus {
     transform: scale(1.2);
     border-color: #ff6b01;
   }
-  &__svg{
+  &__svg {
     fill: #99a1ca;
-  width: 14px;
-  height: 14px;
+    width: 14px;
+    height: 14px;
   }
   &:hover .close-button__svg,
   &:focus .close-button__svg {
