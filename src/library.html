@@ -33,13 +33,19 @@
           </nav>
         </div>
         <div class="button__container">
-          <button type="button" class="library__button">Watched</button>
-          <button type="button" class="library__button">queue</button>
+          <button type="button" class="library__button watched__button">
+            Watched
+          </button>
+          <button type="button" class="library__button queue__button">
+            queue
+          </button>
         </div>
       </div>
     </header>
     <main>
-      <div class="container gallery"></div>
+      <div class="container gallery gallery__watched">
+        <ul class="movie-list"></ul>
+      </div>
     </main>
     <footer>
       <div class="container">
@@ -56,5 +62,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/library.js" type="module"></script>
   </body>
 </html>

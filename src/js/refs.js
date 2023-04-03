@@ -8,6 +8,8 @@ export default function getRefs() {
   const overlay = document.querySelector('.overlay');
   const modal__info = document.querySelector('.modal__info');
   const modalCloseBtn = document.querySelector('.close-btn');
+  const queueBtn = document.querySelector('.queue__button');
+  const watchedBtn = document.querySelector('.watched__button');
   const backdropTrailer = document.querySelector('.backdrop-trailer');
   const playerDiv = document.querySelector('.player');
   return {
@@ -22,5 +24,8 @@ export default function getRefs() {
     footerModalEl,
     backdropTrailer,
     playerDiv,
+    footerModalEl,
+    queueBtn,
+    watchedBtn,
   };
 }
