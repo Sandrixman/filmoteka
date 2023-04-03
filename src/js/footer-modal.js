@@ -1,24 +1,22 @@
 import getRefs from './refs';
-const refs = getRefs();
-// console.log(refs.footerBackdrop);
 
+const { footerBackdrop, footerAboutModalEl, bodyEl } = getRefs();
 
 export function onClickLink(evt) {
   evt.preventDefault();
-  refs.footerBackdrop.classList.remove('is-hidden');
-  refs.footerAboutModalEl.classList.remove('is-hidden');
-  refs.bodyEl.classList.add('modal-open');
-  refs.footerBackdrop.addEventListener("click", onClickBackdrop);
+  footerBackdrop.classList.remove('is-hidden');
+  footerAboutModalEl.classList.remove('is-hidden');
+  bodyEl.classList.add('modal-open');
+  footerBackdrop.addEventListener('click', onClickBackdrop);
   document.addEventListener('keydown', onClickEscape);
 }
 
 export function closeModal(evt) {
-  refs.footerBackdrop.classList.add('is-hidden');
-  refs.footerAboutModalEl.classList.add('is-hidden');
-  refs.bodyEl.classList.remove('modal-open');
-  refs.footerBackdrop.removeEventListener("click", onClickBackdrop);
+  footerBackdrop.classList.add('is-hidden');
+  footerAboutModalEl.classList.add('is-hidden');
+  bodyEl.classList.remove('modal-open');
+  footerBackdrop.removeEventListener('click', onClickBackdrop);
   document.removeEventListener('keydown', onClickEscape);
-  glide.destroy();
 }
 
 function onClickEscape(evt) {
