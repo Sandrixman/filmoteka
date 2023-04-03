@@ -6,6 +6,7 @@ export default function getRefs() {
   const bodyEl = document.querySelector('body');
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
+  const library = document.querySelector('main');
   const searchInput = document.querySelector('.search__input');
   const paginationDiv = document.querySelector('.pagination');
   const modal = document.querySelector('.js-modal');
@@ -35,5 +36,6 @@ export default function getRefs() {
     footerModalEl,
     queueBtn,
     watchedBtn,
+    library,
   };
 }
