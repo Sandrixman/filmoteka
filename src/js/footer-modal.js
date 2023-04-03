@@ -1,9 +1,6 @@
 import getRefs from './refs';
 const refs = getRefs();
 
-
-
-
 export function onClickLink(evt) {
   evt.preventDefault();
   refs.footerBackdrop.classList.remove('is-hidden');

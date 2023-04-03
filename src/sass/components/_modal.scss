@@ -257,7 +257,7 @@ body.modal-open {
   overflow: hidden;
 }
 
-.about-modal {
+div.about-modal {
   z-index: 1000;
   width: 300px;
   height: 430px;
@@ -269,7 +269,7 @@ body.modal-open {
   background-size: contain;
   background-position: 144% 62%;
   transform: scale(1);
-  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 1000ms cubic-bezier(0.4, 0, 0.2, 1) !important;
   box-shadow: 0 0 100px 15px rgba(253, 254, 255, 0.2);
 
   @include tablet {

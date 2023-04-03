@@ -7,12 +7,14 @@ const KEY_WATCHED = 'watchedMovies';
 const KEY_QUEUE = 'queueMovies';
 
 const localStorageAPIService = new LocalStorageAPIService();
-const { gallery, library } = getRefs();
+const { gallery, library, watchedBtn, queueBtn } = getRefs();
 
 export function loadWathed() {
   localStorageAPIService.key = KEY_WATCHED;
   const movies = localStorageAPIService.loadFromLibrary();
   gallery.innerHTML = '';
+  queueBtn.classList.remove("library__button--active");
+  watchedBtn.classList.add("library__button--active");
   if (movies.length) {
     renderMovieCard(gallery, movies);
   }
@@ -34,7 +36,8 @@ export function loadQueue() {
   localStorageAPIService.key = KEY_QUEUE;
   const movies = localStorageAPIService.loadFromLibrary();
   gallery.innerHTML = '';
-
+  watchedBtn.classList.remove("library__button--active");
+  queueBtn.classList.add("library__button--active");
   if (movies.length) {
     renderMovieCard(gallery, movies);
   }
