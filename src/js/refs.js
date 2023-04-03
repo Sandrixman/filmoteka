@@ -1,4 +1,9 @@
 export default function getRefs() {
+  const footerModalEl = document.querySelector(".footer-modal-js");
+  const footerAboutModalEl = document.querySelector(".about-modal-js");
+  const footerCloseBtn = document.querySelector(".about-modal__close-js");
+  const footerBackdrop = document.querySelector(".backdrop-js");
+  const bodyEl = document.querySelector("body");
   const footerModalEl = document.querySelector('.footer-modal-js');
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
@@ -22,6 +27,10 @@ export default function getRefs() {
     modal__info,
     modalCloseBtn,
     footerModalEl,
+    footerAboutModalEl,
+    footerCloseBtn,
+    footerBackdrop,
+    bodyEl
     backdropTrailer,
     playerDiv,
     footerModalEl,
