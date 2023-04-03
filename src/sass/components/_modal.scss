@@ -227,6 +227,10 @@
   visibility: hidden;
   pointer-events: none;
 }
+body.modal-open{
+  overflow: hidden;
+}
+
 .about-modal {
   z-index: 1000;
   width: 300px;
@@ -250,8 +254,8 @@
     width: 800px;
   }
   &__close-btn {
-    top: 6px;
-    right: 6px;
+    top: -5px;
+    right: 10px;
   }
   &__list {
     display: flex;
@@ -361,7 +365,43 @@
   transform: translateY(-50%);
   line-height: 1;
 }
+div.glide{
+  cursor: grab;
+}
 
 .glide__track{
   overflow: hidden;
+}
+.close-button{
+  position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #99a1ca;
+    color: #99a1ca;
+    top: 0;
+    right: 0;
+    background-color: initial;
+    border-radius: 50%;
+    margin-top: 8px;
+    margin-right: 8px;
+    transform: scale(1);
+    transition: border-color .25s cubic-bezier(.4,0,.2,1),transform .25s cubic-bezier(.4,0,.2,1),color .25s cubic-bezier(.4,0,.2,1);
+    &:hover,
+  &:focus {
+    transform: scale(1.2);
+    border-color: #ff6b01;
+  }
+  &__svg{
+    fill: #99a1ca;
+  width: 14px;
+  height: 14px;
+  }
+  &:hover .close-button__svg,
+  &:focus .close-button__svg {
+    transform: scale(1.2);
+    fill: #ff6b01;
+  }
 }
