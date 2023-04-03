@@ -1,21 +1,32 @@
 import getRefs from './refs';
 import { renderMovieCard } from './renderMovieCard';
 import LocalStorageAPIService from './local-storage-api';
+import emptyCollection from '../images/empty-collection.jpg';
 
 const KEY_WATCHED = 'watchedMovies';
 const KEY_QUEUE = 'queueMovies';
 
 const localStorageAPIService = new LocalStorageAPIService();
-const { gallery } = getRefs();
-
+const { gallery, library } = getRefs();
 
 export function loadWathed() {
   localStorageAPIService.key = KEY_WATCHED;
   const movies = localStorageAPIService.loadFromLibrary();
   gallery.innerHTML = '';
-
   if (movies.length) {
     renderMovieCard(gallery, movies);
+  }
+  if (!movies.length) {
+    const markup = `
+    <div">
+      <img
+        class="emptyCollection"
+        src="${emptyCollection}"
+        alt="emptyCollection"
+      />
+    </div>
+    `;
+    library.innerHTML = markup;
   }
 }
 
