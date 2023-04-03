@@ -43,6 +43,11 @@
   }
 }
 
+.img-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
 .modal__img {
   width: 240px;
   height: 357px;
@@ -56,7 +61,22 @@
   @include desktop {
     width: 375px;
     height: 478px;
-    cursor: pointer;
+  }
+}
+
+.play-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out;
+  &:hover {
+    transform: scale(1.5);
   }
 }
 
@@ -119,11 +139,11 @@
   width: 108px;
 
   @include tablet {
-      width: 156px;
-    }  
-    @include desktop {
-      width: 239px;
-    }
+    width: 156px;
+  }
+  @include desktop {
+    width: 239px;
+  }
 }
 
 .votes-wrapper {

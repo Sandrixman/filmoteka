@@ -1,5 +1,11 @@
 import getRefs from './refs ';
-import { saveToQueue, saveToWatched, loadFromQueue, loadFromWatched } from './mylibrary-service';
+import playIcon from '../images/play-button.png';
+import {
+  saveToQueue,
+  saveToWatched,
+  loadFromQueue,
+  loadFromWatched,
+} from './mylibrary-service';
 
 const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
 
@@ -11,7 +17,8 @@ export let movieId = '';
 modal.addEventListener('click', onModalBtnClick);
 
 function onModalBtnClick(evt) {
-  const { title, genres, poster, year, vote, votes, about, popularity, id } = data.dataset;
+  const { title, genres, poster, year, vote, votes, about, popularity, id } =
+    data.dataset;
   movieId = id;
   if (evt.target.classList.contains('add-watched')) {
     const newObject = {
@@ -28,9 +35,9 @@ function onModalBtnClick(evt) {
     watchedArray.push(newObject);
 
     saveToWatched(watchedArray);
-    evt.target.classList.add("delete-watched");
+    evt.target.classList.add('delete-watched');
     evt.target.classList.remove('add-watched');
-    evt.target.textContent = "Delete from watched";
+    evt.target.textContent = 'Delete from watched';
     return;
   }
 
@@ -38,9 +45,9 @@ function onModalBtnClick(evt) {
     watchedArray = watchedArray.filter(item => item.id !== id);
 
     saveToWatched(watchedArray);
-    evt.target.classList.add("add-watched");
+    evt.target.classList.add('add-watched');
     evt.target.classList.remove('delete-watched');
-    evt.target.textContent = "Add to watched";
+    evt.target.textContent = 'Add to watched';
     return;
   }
   if (evt.target.classList.contains('add-queue')) {
@@ -58,9 +65,9 @@ function onModalBtnClick(evt) {
     queueArray.push(newObject);
 
     saveToQueue(queueArray);
-    evt.target.classList.add("delete-queue");
+    evt.target.classList.add('delete-queue');
     evt.target.classList.remove('add-queue');
-    evt.target.textContent = "Delete from queue";
+    evt.target.textContent = 'Delete from queue';
     return;
   }
 
@@ -68,12 +75,11 @@ function onModalBtnClick(evt) {
     queueArray = queueArray.filter(item => item.id !== id);
 
     saveToQueue(queueArray);
-    evt.target.classList.add("add-queue");
+    evt.target.classList.add('add-queue');
     evt.target.classList.remove('delete-queue');
-    evt.target.textContent = "Add to queue";
+    evt.target.textContent = 'Add to queue';
     return;
   }
-
 }
 
 export function renderModal(evt) {
@@ -83,20 +89,30 @@ export function renderModal(evt) {
 
   let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
   if (queueArray.filter(item => item.id === id).length) {
-    queueBtnMarkup = 'class="modal__btn delete-queue btn-accent">Delete from queue';
+    queueBtnMarkup =
+      'class="modal__btn delete-queue btn-accent">Delete from queue';
   }
 
-  let watchedBtnMarkup = 'class="modal__btn add-watched btn-accent">add to Watched';
+  let watchedBtnMarkup =
+    'class="modal__btn add-watched btn-accent">add to Watched';
   if (watchedArray.filter(item => item.id === id).length) {
-    watchedBtnMarkup = 'class="modal__btn delete-watched btn-accent">Delete from Watched';
+    watchedBtnMarkup =
+      'class="modal__btn delete-watched btn-accent">Delete from Watched';
   }
 
   const markup = `
-  <img
-    class="modal__img"
-    src="${poster}"
-    alt=""
-  />
+  <div class="img-wrapper">
+    <img
+      class="modal__img play"
+      src="${poster}"
+      alt="poster"
+    />
+    <img
+      class="play-icon play"
+      src="${playIcon}"
+      alt="play-icon"
+    />
+  </div>
   <div class="movie-description">
     <h2 class="movie-title">${title}</h2>
     <ul class="movie-info__list">

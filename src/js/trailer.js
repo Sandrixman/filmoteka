@@ -6,7 +6,7 @@ const tmdbAPIService = new TmdbAPIService();
 const { backdropTrailer, playerDiv } = getRefs();
 
 export async function showTrailer(evt) {
-  if (evt.target.nodeName === 'IMG') {
+  if (evt.target.classList.contains('play')) {
     backdropTrailer.classList.remove('is-hidden');
     const { results } = await tmdbAPIService.fetchTrailer(movieId);
     const key = results[0].key;

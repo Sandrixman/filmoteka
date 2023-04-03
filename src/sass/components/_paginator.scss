@@ -63,7 +63,7 @@
 
 .pagination .tui-page-btn.tui-last::after {
   content: '>';
-  background: no-repeat center url('../image/arrow-right.svg');
+  background: no-repeat center url('../images/arrow-right.svg');
   position: absolute;
   color: transparent;
   font-weight: 400;
@@ -72,7 +72,7 @@
 
 .pagination .tui-page-btn.tui-first::after {
   content: '<';
-  background: no-repeat center url('../image/arrow-left.svg');
+  background: no-repeat center url('../images/arrow-left.svg');
   position: absolute;
   color: transparent;
   font-weight: 400;

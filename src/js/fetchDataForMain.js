@@ -4,7 +4,7 @@ import { renderMovieCard } from './renderMovieCard';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { options } from './paginator';
-import dummy from '../image/dummy-poster.jpg';
+import dummy from '../images/dummy-poster.jpg';
 import spiner from './spiner';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -46,7 +46,7 @@ export function cardListGenerator(genresList, cards, total_results) {
         const genres = createGenres(genre_ids, genresList);
         const release_year = release_date.slice(0, 4) || 'No year';
         popularity = popularity.toFixed(1);
-        vote_average = vote_average.toFixed(1)
+        vote_average = vote_average.toFixed(1);
         return {
           fullposter_path,
           title,

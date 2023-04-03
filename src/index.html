@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Filmoteka</title>
-    <link rel="stylesheet" href="../node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./sass/main.scss" />
   </head>
   <body>
@@ -14,7 +20,7 @@
         <div class="home__container">
           <a href="./index.html" class="link logo__link">
             <svg class="logo__icon" width="24" height="24">
-              <use href="./image/symbol-defs.svg#icon-film"></use>
+              <use href="./images/symbol-defs.svg#icon-film"></use>
             </svg>
             <span class="logo__word">Filmoteka</span>
           </a>
@@ -45,7 +51,7 @@
           />
           <button type="submit" class="seach__button">
             <svg class="search__icon" width="12" height="12">
-              <use href="./image/symbol-defs.svg#icon-search1"></use>
+              <use href="./images/symbol-defs.svg#icon-search1"></use>
             </svg>
           </button>
         </form>
@@ -53,10 +59,8 @@
     </header>
 
     <main>
-      <div class="container movie">
         <ul class="movie-list"></ul>
         <div class="pagination" id="pagination"></div>
-      </div>
     </main>
 
     <footer>
@@ -66,7 +70,7 @@
           <p>
             Developed with
             <svg class="heart__icon" width="14" height="13">
-              <use href="./image/symbol-defs.svg#icon-heart"></use>
+              <use href="./images/symbol-defs.svg#icon-heart"></use>
             </svg>
             by
             <a href="" class="footer__link footer-modal-js">GoIT Students</a>
@@ -78,7 +82,7 @@
     <!-- модальне вікно -->
     <div class="modal js-modal hidden">
       <svg class="close-btn">
-        <use href="./image/symbol-defs.svg#icon-close"></use>
+        <use href="./images/symbol-defs.svg#icon-close"></use>
       </svg>
       <div class="modal__info"></div>
     </div>
@@ -274,11 +278,12 @@
 
     <!-- затемнення під модалкою -->
     <div class="overlay hidden"></div>
+    <!-- затемнення під модалкою -->
 
     <!-- трейлер -->
     <div class="backdrop-trailer is-hidden" data-modal>
       <svg class="cancel-btn">
-        <use href="./image/symbol-defs.svg#icon-cancel"></use>
+        <use href="./images/symbol-defs.svg#icon-cancel"></use>
       </svg>
       <div class="player-container">
         <div class="player">
