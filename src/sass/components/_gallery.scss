@@ -33,10 +33,27 @@
 .movie-list__info {
   margin-top: 12px;
   @include desktop {
-    margin-bottom: 16;
+    margin-bottom: 16px;
   }
 }
+.movie-list__vote {
+  display: inline-block;
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  color: #ffffff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  padding: 1px 6px;
+  @include tablet {
+    padding: 1px 10px;
+  }
 
+  @include desktop {
+    padding: 3px 12px;
+  }
+}
 .movie-list__title,
 .movie-list__text {
   font-size: 12px;
