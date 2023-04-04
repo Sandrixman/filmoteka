@@ -7,7 +7,7 @@ import {
   loadFromWatched,
 } from './mylibrary-service';
 
-const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
+const { overlay, modal, modal__info, modalCloseBtn, bodyEl } = getRefs();
 
 let data = '';
 let watchedArray = loadFromWatched();
@@ -87,6 +87,8 @@ export function renderModal(evt) {
   const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
 
+  bodyEl.style.overflow = 'hidden';
+
   let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
   if (queueArray.filter(item => item.id === id).length) {
     queueBtnMarkup =
@@ -161,6 +163,7 @@ function removeModal() {
 }
 
 function addHidden() {
+  bodyEl.style.overflow = 'auto';
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 
@@ -171,7 +174,6 @@ function escapePressed(event) {
   event.preventDefault();
 
   if (event.code === 'Escape') {
-    console.log('Ecsape was pressed');
     addHidden();
   }
 }

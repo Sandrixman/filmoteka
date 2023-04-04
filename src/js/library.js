@@ -1,9 +1,9 @@
 import { renderModal } from './modal';
-// import { showTrailer, hideTrailer } from './trailer';
+import { showTrailer, hideTrailer } from './trailer';
 import { loadQueue, loadWathed } from './mylibrary-service';
 import getRefs from './refs';
 
-const { queueBtn, watchedBtn, gallery } = getRefs();
+const { queueBtn, watchedBtn, gallery, modal, backdropTrailer } = getRefs();
 
 loadWathed();
 document.addEventListener('DOMContentLoaded', function () {
@@ -13,5 +13,5 @@ watchedBtn.addEventListener('click', loadWathed);
 queueBtn.addEventListener('click', loadQueue);
 
 gallery.addEventListener('click', renderModal);
-// modal.addEventListener('click', showTrailer);
-// backdropTrailer.addEventListener('click', hideTrailer);
+modal.addEventListener('click', showTrailer);
+backdropTrailer.addEventListener('click', hideTrailer);
