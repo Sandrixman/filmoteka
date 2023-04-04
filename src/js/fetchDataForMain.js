@@ -14,7 +14,7 @@ const { gallery, paginationDiv } = getRefs();
 
 export function createGenres(genre_ids, genresIdList) {
   const genreNames = genre_ids.map(id => findGenreByID(id, genresIdList));
-  if (genreNames.length <= 3) {
+  if (genreNames.length <= 2) {
     return genreNames.join(', ');
   } else {
     return `${genreNames.slice(0, 2).join(', ')}, Other`;
@@ -86,7 +86,6 @@ export async function getCardData() {
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
     paginationDiv.style.display = 'flex';
-
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }

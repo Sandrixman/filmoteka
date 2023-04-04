@@ -66,4 +66,10 @@
 }
 .movie-list__text {
   color: #ff6b08;
+  span {
+    color: #fff;
+    background-color: #ff6b08;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
 }
