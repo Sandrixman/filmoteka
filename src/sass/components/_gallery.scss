@@ -43,9 +43,29 @@
     margin-bottom: 16px;
   }
 }
+.main .movie-list__vote {
+  display: none;
+}
+.movie-list__vote {
+  display: inline-block;
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  color: #ffffff;
+  background-color: #ff6b01;
+  border-radius: 5px;
+  padding: 1px 6px;
+  @include tablet {
+    padding: 1px 10px;
+  }
+  @include desktop {
+    padding: 3px 12px;
+  }
+}
 
-.movie__list__title,
-.movie__list__text {
+.movie-list__title,
+.movie-list__text {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.2;

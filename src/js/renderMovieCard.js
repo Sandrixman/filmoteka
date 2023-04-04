@@ -23,10 +23,10 @@ export function renderMovieCard(gallery, card_data) {
           data-vote="${vote_average}"
           data-votes="${vote_count}"
           data-about="${overview}">
-        <img class="movie__list__img" src=${fullposter_path} alt=${title}>
-        <div class="movie__list__info">
-          <h2 class="movie__list__title">${title}</h2>
-          <p class="movie__list__text">${genres} | ${release_year}</p>
+        <img class="movie-list__img" src=${fullposter_path} alt=${title}>
+        <div class="movie-list__info">
+          <h2 class="movie-list__title">${title}</h2>
+          <p class="movie-list__text">${genres} | ${release_year} <span class="movie-list__vote"> ${vote_average}</span></p>
         </div>
       </li>
     `;
