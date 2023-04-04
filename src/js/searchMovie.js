@@ -7,6 +7,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { options } from './paginator';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import errorImg from '../images/pixar-404-Error.jpg';
 
 const { searchForm, gallery, searchInput, paginationDiv } = getRefs();
 const tmdbAPIService = new TmdbAPIService();
@@ -43,7 +44,10 @@ async function generateSearchedMovies(query) {
     if (!total_results) {
       errorMessage();
       gallery.innerHTML = '';
-      gallery.style.backgroundImage = "url('')";      //********сюди вставити якусь картинку*********/
+      gallery.style.backgroundImage = `url(${errorImg})`;
+      gallery.style.height = '500px';
+      gallery.style.backgroundRepeat = 'no-repeat';
+      gallery.style.backgroundPosition = 'center';
       return;
     }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();

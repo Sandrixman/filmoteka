@@ -1,7 +1,7 @@
 .movie-list {
   max-width: 1280px;
   display: grid;
-  align-items: start;
+  align-items: stretch;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
   margin: 0;
@@ -66,10 +66,4 @@
 }
 .movie-list__text {
   color: #ff6b08;
-}
-
-.emptyCollection {
-  max-width: 1280px;
-  padding: 30px;
-  margin: auto;
 }
