@@ -1,11 +1,8 @@
 .home__header {
   width: 100%;
   margin: 0 auto;
-  height: 230px;
-  padding-top: 40px;
-  padding-bottom: 44px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 50px;
   background-image: url('../images/home-mobile-1.jpg');
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -17,9 +14,6 @@
   background-size: cover;
   background-position: center;
   @include tablet {
-    height: 216px;
-    padding-left: 32px;
-    padding-right: 32px;
     background-image: url('../images/home-tablet-1.jpg');
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -39,11 +33,6 @@
 .library__header {
   width: 100%;
   margin: 0 auto;
-  height: 230px;
-  padding-top: 40px;
-  padding-bottom: 44px;
-  padding-left: 20px;
-  padding-right: 20px;
   background-image: url('../images/watched-mobile-1.jpg');
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -57,9 +46,6 @@
   background-position: center;
 
   @include tablet {
-    height: 216px;
-    padding-left: 32px;
-    padding-right: 32px;
     background-image: url('../images/watched-tablet-1.jpg');
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -79,7 +65,7 @@
 .home__container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 54px;
+  padding-top: 10px;
   @include tablet {
     margin-bottom: 40px;
   }
@@ -88,23 +74,16 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  &:hover {
+    animation: glow 0.5s infinite alternate;
+  }
 }
 .logo__icon {
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    transform: scale(1.2);
-    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.4));
-  }
 }
 .logo__word {
   display: none;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    transform: scaleY(1.2);
-    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.4));
-  }
   @include tablet {
     display: block;
     font-weight: 500;
@@ -128,8 +107,8 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    transform: scale(1.2);
-    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.4));
+    transform: scale(1.1);
+    text-shadow: 1px 1px 5px #ff001b, -1px -1px 5px #ff001b;
   }
 }
 .navigation__link--current::after {
@@ -191,6 +170,7 @@
   display: flex;
   gap: 20px;
   justify-content: center;
+  padding-bottom: 30px;
 }
 .library__button {
   width: 130px;
@@ -210,9 +190,12 @@
     box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
     border: none;
   }
+  &--active {
+    background-color: #ff6b01;
+    box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
+  }
 }
-.home__footer {
-  background-color: #f7f7f7;
+.footer {
   color: #545454;
   font-weight: 400;
   font-size: 14px;

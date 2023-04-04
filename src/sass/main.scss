@@ -1,5 +1,5 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
-@import './utils/vars';
+@import './utils/animation';
 @import './utils/placeholder';
 @import './utils/mixins';
 @import './components/header';
@@ -10,7 +10,7 @@
 
 body {
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-family: Roboto, sans-serif;
 }
 *,
@@ -38,6 +38,25 @@ input {
 li {
   list-style: none;
 }
+
+.container {
+  width: 320px;
+  padding: 20px;
+  margin: auto;
+  @include tablet {
+    width: 768px;
+    padding: 30px 32px;
+  }
+
+  @include desktop {
+    width: 1280px;
+  }
+}
+
 .link {
   text-decoration: none;
+}
+
+footer {
+  background-color: #f7f7f7;
 }

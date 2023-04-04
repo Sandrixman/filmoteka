@@ -6,9 +6,7 @@ import getRefs from './refs';
 const { queueBtn, watchedBtn, gallery, modal, backdropTrailer } = getRefs();
 
 loadMovies(KEY_WATCHED);
-document.addEventListener('DOMContentLoaded', function () {
-  watchedBtn.focus();
-});
+
 watchedBtn.addEventListener('click', onWatchedBtnClick);
 queueBtn.addEventListener('click', onQueueBtnClick);
 

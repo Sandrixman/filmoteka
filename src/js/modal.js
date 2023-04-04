@@ -17,11 +17,9 @@ let watchedArray = loadFromWatched();
 let queueArray = loadFromQueue();
 export let movieId = '';
 
-
 export function onModalBtnClick(evt) {
   const newObject = createMuvieObject(data.dataset);
-  const { id } =
-    data.dataset;
+  const { id } = data.dataset;
   movieId = id;
 
   if (evt.target.classList.contains('add-watched')) {
@@ -60,7 +58,7 @@ export function onModalBtnClick(evt) {
 }
 
 export function renderModal(evt) {
-  data = evt.target.closest('.movie-list__item');
+  data = evt.target.closest('.movie__list__item');
   const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
 

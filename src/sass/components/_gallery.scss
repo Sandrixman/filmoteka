@@ -1,27 +1,26 @@
-.movie-list {
+.movie__list {
   max-width: 1280px;
   display: grid;
   align-items: start;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
-  padding: 20px;
   margin: 0;
+  padding-bottom: 30px;
   list-style: none;
   @include tablet {
-    padding: 60px 32px;
+    padding: 30px 0;
     grid-gap: 32px;
   }
 
   @include desktop {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    padding: 60px 32px;
     grid-gap: 16px;
     margin-left: auto;
     margin-right: auto;
   }
 }
 
-.movie-list__item {
+.movie__list__item {
   width: 100%;
   cursor: pointer;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -32,12 +31,12 @@
   }
 }
 
-.movie-list__img {
+.movie__list__img {
   height: 80%;
   border-radius: 5px;
 }
 
-.movie-list__info {
+.movie__list__info {
   margin-top: 12px;
   padding: 10px;
   @include desktop {
@@ -45,8 +44,8 @@
   }
 }
 
-.movie-list__title,
-.movie-list__text {
+.movie__list__title,
+.movie__list__text {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.2;
@@ -61,10 +60,10 @@
     font-size: 20px;
   }
 }
-.movie-list__title {
+.movie__list__title {
   text-transform: uppercase;
 }
-.movie-list__text {
+.movie__list__text {
   color: #ff6b08;
 }
 
