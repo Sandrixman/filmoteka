@@ -1,5 +1,5 @@
 import getRefs from './refs';
-import { renderMovieCard } from './renderLabraryMovieCard';
+import { renderMovieCard } from './renderMovieCard';
 import LocalStorageAPIService from './local-storage-api';
 import emptyCollection from '../images/empty-collection.jpg';
 
