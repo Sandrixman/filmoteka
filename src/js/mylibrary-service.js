@@ -7,7 +7,9 @@ export const KEY_WATCHED = 'watchedMovies';
 export const KEY_QUEUE = 'queueMovies';
 
 const localStorageAPIService = new LocalStorageAPIService();
-const { gallery, moviesContainer } = getRefs();
+const { moviesContainer, gallery } = getRefs();
+
+console.log(getRefs());
 
 export function createMuvieObject(data) {
   const { title, genres, poster, year, vote, votes, about, popularity, id } =

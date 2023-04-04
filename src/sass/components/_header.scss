@@ -66,9 +66,7 @@
   display: flex;
   justify-content: space-between;
   padding-top: 10px;
-  @include tablet {
-    margin-bottom: 40px;
-  }
+  margin-bottom: 40px;
 }
 .logo__link {
   display: flex;
@@ -215,7 +213,4 @@
   color: #ff001b;
   font-size: 12px;
   line-height: 14px;
-}
-.container.movie {
-  padding-bottom: 60px;
 }

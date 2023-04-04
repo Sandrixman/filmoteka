@@ -13,7 +13,7 @@ export function renderMovieCard(gallery, card_data) {
         id,
       }) => {
         return `
-      <li class="movie__list__item"
+      <li class="movie-list__item"
           data-id="${id}"
           data-title="${title}"
           data-genres="${genres}"
