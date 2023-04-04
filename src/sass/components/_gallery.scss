@@ -24,14 +24,22 @@
 .movie-list__item {
   width: 100%;
   cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    transform: scale(1.01);
+  }
 }
 
 .movie-list__img {
   height: 80%;
+  border-radius: 5px;
 }
 
 .movie-list__info {
   margin-top: 12px;
+  padding: 10px;
   @include desktop {
     margin-bottom: 16px;
   }
@@ -59,8 +67,9 @@
 }
 .movie-list__title,
 .movie-list__text {
+  font-weight: 500;
   font-size: 12px;
-  font-family: 'Roboto';
+  line-height: 1.2;
   font-weight: 500;
   margin: 0;
 

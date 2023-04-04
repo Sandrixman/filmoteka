@@ -67,6 +67,7 @@ export function cardListGenerator(genresList, cards, total_results) {
 export async function getCardData() {
   const trendingUrl = '/trending/movie/day';
   try {
+    paginationDiv.style.display = 'none';
     const spinerInstance = spiner();
     const { results, total_results } = await tmdbAPIService
       .fetchSearch(trendingUrl)
@@ -75,17 +76,17 @@ export async function getCardData() {
         return data;
       })
       .finally(() => spinerInstance.stop());
-    const genresIdList = await tmdbAPIService.downloadGenresIdList();
 
+    const genresIdList = await tmdbAPIService.downloadGenresIdList();
     const movies = cardListGenerator(genresIdList, results, total_results);
 
     gallery.innerHTML = '';
-    paginationDiv.style.display = 'none';
-
     renderMovieCard(gallery, movies.card_data);
+
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
     paginationDiv.style.display = 'flex';
+
   } catch (error) {
     Notify.failure('Error happend while the resource loading!');
   }
@@ -94,4 +95,8 @@ export async function getCardData() {
 pagination.on('beforeMove', event => {
   tmdbAPIService.page = event.page;
   getCardData();
+});
+
+pagination.on('afterMove', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });

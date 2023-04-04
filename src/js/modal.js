@@ -5,80 +5,57 @@ import {
   saveToWatched,
   loadFromQueue,
   loadFromWatched,
+  createMuvieObject,
+  KEY_QUEUE,
+  KEY_WATCHED,
 } from './mylibrary-service';
 
-const { overlay, modal, modal__info, modalCloseBtn } = getRefs();
+const { overlay, modal, modal__info, modalCloseBtn, bodyEl } = getRefs();
 
 let data = '';
 let watchedArray = loadFromWatched();
 let queueArray = loadFromQueue();
 export let movieId = '';
 
-modal.addEventListener('click', onModalBtnClick);
 
-function onModalBtnClick(evt) {
-  const { title, genres, poster, year, vote, votes, about, popularity, id } =
+export function onModalBtnClick(evt) {
+  const newObject = createMuvieObject(data.dataset);
+  const { id } =
     data.dataset;
   movieId = id;
-  if (evt.target.classList.contains('add-watched')) {
-    const newObject = {
-      id,
-      fullposter_path: poster,
-      title,
-      genres,
-      release_year: year,
-      overview: about,
-      popularity,
-      vote_average: vote,
-      vote_count: votes,
-    };
-    watchedArray.push(newObject);
 
-    saveToWatched(watchedArray);
+  if (evt.target.classList.contains('add-watched')) {
+    saveToWatched(watchedArray, newObject);
     evt.target.classList.add('delete-watched');
     evt.target.classList.remove('add-watched');
     evt.target.textContent = 'Delete from watched';
-    return;
+    return KEY_WATCHED;
   }
 
   if (evt.target.classList.contains('delete-watched')) {
     watchedArray = watchedArray.filter(item => item.id !== id);
-
     saveToWatched(watchedArray);
     evt.target.classList.add('add-watched');
     evt.target.classList.remove('delete-watched');
     evt.target.textContent = 'Add to watched';
-    return;
+    return KEY_WATCHED;
   }
-  if (evt.target.classList.contains('add-queue')) {
-    const newObject = {
-      id,
-      fullposter_path: poster,
-      title,
-      genres,
-      release_year: year,
-      overview: about,
-      popularity,
-      vote_average: vote,
-      vote_count: votes,
-    };
-    queueArray.push(newObject);
 
-    saveToQueue(queueArray);
+  if (evt.target.classList.contains('add-queue')) {
+    saveToQueue(queueArray, newObject);
     evt.target.classList.add('delete-queue');
     evt.target.classList.remove('add-queue');
     evt.target.textContent = 'Delete from queue';
-    return;
+    return KEY_QUEUE;
   }
 
   if (evt.target.classList.contains('delete-queue')) {
     queueArray = queueArray.filter(item => item.id !== id);
-
     saveToQueue(queueArray);
     evt.target.classList.add('add-queue');
     evt.target.classList.remove('delete-queue');
     evt.target.textContent = 'Add to queue';
-    return;
+    return KEY_QUEUE;
   }
 }
 
@@ -86,6 +63,8 @@ export function renderModal(evt) {
   data = evt.target.closest('.movie-list__item');
   const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
+
+  bodyEl.style.overflow = 'hidden';
 
   let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
   if (queueArray.filter(item => item.id === id).length) {
@@ -161,6 +140,7 @@ function removeModal() {
 }
 
 function addHidden() {
+  bodyEl.style.overflow = 'auto';
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 
@@ -171,7 +151,6 @@ function escapePressed(event) {
   event.preventDefault();
 
   if (event.code === 'Escape') {
-    console.log('Ecsape was pressed');
     addHidden();
   }
 }

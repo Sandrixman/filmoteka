@@ -27,24 +27,29 @@ export function onSearchFormSubmit(evt) {
     tmdbAPIService.page = event.page;
     generateSearchedMovies(searchQuery);
   });
+
+  pagination.on('afterMove', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 }
 
 async function generateSearchedMovies(query) {
   try {
+    paginationDiv.style.display = 'none';
     const spinerInstance = spiner();
     const { results, total_results } = await tmdbAPIService
       .querySearch(query)
       .finally(() => spinerInstance.stop());
     if (!total_results) {
       errorMessage();
+      gallery.innerHTML = '';
+      gallery.style.backgroundImage = "url('')";      //********сюди вставити якусь картинку*********/
       return;
     }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
     const movies = cardListGenerator(genresIdList, results, total_results);
 
-    paginationDiv.style.display = 'none';
     gallery.innerHTML = '';
-
     renderMovieCard(gallery, movies.card_data);
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);

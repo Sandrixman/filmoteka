@@ -6,6 +6,7 @@ export default function getRefs() {
   const bodyEl = document.querySelector('body');
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
+  const moviesContainer = document.querySelector('.container.movie');
   const library = document.querySelector('main');
   const searchInput = document.querySelector('.search__input');
   const paginationDiv = document.querySelector('.pagination');
@@ -37,5 +38,6 @@ export default function getRefs() {
     queueBtn,
     watchedBtn,
     library,
+    moviesContainer,
   };
 }

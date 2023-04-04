@@ -3,51 +3,52 @@ import { renderMovieCard } from './renderMovieCard';
 import LocalStorageAPIService from './local-storage-api';
 import emptyCollection from '../images/empty-collection.jpg';
 
-const KEY_WATCHED = 'watchedMovies';
-const KEY_QUEUE = 'queueMovies';
+export const KEY_WATCHED = 'watchedMovies';
+export const KEY_QUEUE = 'queueMovies';
 
 const localStorageAPIService = new LocalStorageAPIService();
-const { gallery, library } = getRefs();
+const { gallery, moviesContainer } = getRefs();
 
-export function loadWathed() {
-  localStorageAPIService.key = KEY_WATCHED;
+export function createMuvieObject(data) {
+  const { title, genres, poster, year, vote, votes, about, popularity, id } =
+    data;
+
+  return {
+    id,
+    fullposter_path: poster,
+    title,
+    genres,
+    release_year: year,
+    overview: about,
+    popularity,
+    vote_average: vote,
+    vote_count: votes,
+  };
+}
+
+export function loadMovies(key) {
+  localStorageAPIService.key = key;
   const movies = localStorageAPIService.loadFromLibrary();
   gallery.innerHTML = '';
   if (movies.length) {
+    document.querySelector('.emptyCollection')?.remove();
     renderMovieCard(gallery, movies);
-  }
-  if (!movies.length) {
-    const markup = `
-    <div">
-      <img
-        class="emptyCollection"
-        src="${emptyCollection}"
-        alt="emptyCollection"
-      />
-    </div>
-    `;
-    library.innerHTML = markup;
+  } else {
+    const markup = `<div class="emptyCollection"><img src="${emptyCollection}" alt="emptyCollection"/></div>`;
+    moviesContainer.insertAdjacentHTML('afterbegin', markup);
   }
 }
 
-export function loadQueue() {
-  localStorageAPIService.key = KEY_QUEUE;
-  const movies = localStorageAPIService.loadFromLibrary();
-  gallery.innerHTML = '';
-
-  if (movies.length) {
-    renderMovieCard(gallery, movies);
-  }
-}
-
-export function saveToWatched(muvies) {
+export function saveToWatched(movies, newMovie = null) {
+  if (newMovie) movies.push(newMovie);
   localStorageAPIService.key = KEY_WATCHED;
-  localStorageAPIService.saveToLibrary(muvies);
+  localStorageAPIService.saveToLibrary(movies);
 }
 
-export function saveToQueue(muvies) {
+export function saveToQueue(movies, newMovie = null) {
+  if (newMovie) movies.push(newMovie);
   localStorageAPIService.key = KEY_QUEUE;
-  localStorageAPIService.saveToLibrary(muvies);
+  localStorageAPIService.saveToLibrary(movies);
 }
 
 export function loadFromWatched() {
