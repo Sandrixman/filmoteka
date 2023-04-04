@@ -42,6 +42,8 @@ async function generateSearchedMovies(query) {
       .finally(() => spinerInstance.stop());
     if (!total_results) {
       errorMessage();
+      gallery.innerHTML = '';
+      gallery.style.backgroundImage = "url('')";      //********сюди вставити якусь картинку*********/
       return;
     }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
