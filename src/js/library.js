@@ -3,7 +3,7 @@ import { showTrailer, hideTrailer } from './trailer';
 import { loadMovies, KEY_QUEUE, KEY_WATCHED } from './mylibrary-service';
 import getRefs from './refs';
 
-const { queueBtn, watchedBtn, gallery } = getRefs();
+const { queueBtn, watchedBtn, gallery, modal, backdropTrailer } = getRefs();
 
 loadMovies(KEY_WATCHED);
 document.addEventListener('DOMContentLoaded', function () {
