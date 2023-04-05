@@ -43,7 +43,7 @@ export function cardListGenerator(genresList, cards, total_results) {
         const fullposter_path = poster_path
           ? `https://image.tmdb.org/t/p/w500${poster_path}`
           : dummy;
-        const genres = createGenres(genre_ids, genresList);
+        const genres = createGenres(genre_ids, genresList) || 'No genre';
         const release_year = release_date.slice(0, 4) || 'No year';
         popularity = popularity.toFixed(1);
         vote_average = vote_average.toFixed(1);

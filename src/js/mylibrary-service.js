@@ -9,8 +9,6 @@ export const KEY_QUEUE = 'queueMovies';
 const localStorageAPIService = new LocalStorageAPIService();
 const { moviesContainer, gallery } = getRefs();
 
-console.log(getRefs());
-
 export function createMuvieObject(data) {
   const { title, genres, poster, year, vote, votes, about, popularity, id } =
     data;

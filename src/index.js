@@ -5,7 +5,6 @@ import { renderModal, onModalBtnClick } from './js/modal';
 import { showTrailer, hideTrailer } from './js/trailer';
 import { onClickLink, closeModal } from './js/footer-modal';
 import getRefs from './js/refs';
-import spiner from './js/spiner';
 import { glide } from './js/slider-glide';
 
 const {
