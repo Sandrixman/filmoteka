@@ -2,6 +2,13 @@
   display: flex;
   justify-content: center;
   gap: 2px;
+  margin-bottom: 20px;
+  @include tablet {
+    margin-bottom: 30px;
+  }
+  @include desktop {
+    margin-bottom: 60px;
+  }
 }
 
 .pagination .tui-page-btn {

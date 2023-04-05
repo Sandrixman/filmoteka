@@ -1,10 +1,10 @@
 .movie {
-  padding-bottom: 20px;
+  padding-top: 20px;
   @include tablet {
-    padding-bottom: 30px;
+    padding-top: 30px;
   }
   @include desktop {
-    padding-bottom: 60px;
+    padding-top: 60px;
   }
 }
 
@@ -16,16 +16,19 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 20px;
   margin: 0;
-  padding: 20px;
+  padding: 0 20px;
   list-style: none;
+  margin-bottom: 20px;
   @include tablet {
-    padding: 30px 32px;
+    padding: 0 32px;
     grid-gap: 32px;
+    margin-bottom: 30px;
   }
   @include desktop {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     grid-gap: 16px;
-    padding: 60px 32px;
+    padding: 0 32px;
+    margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
   }
