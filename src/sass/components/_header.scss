@@ -1,8 +1,6 @@
 .home__header {
   width: 100%;
   margin: 0 auto;
-  padding-top: 10px;
-  padding-bottom: 50px;
   background-image: url('../images/home-mobile-1.jpg');
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
@@ -62,10 +60,12 @@
     }
   }
 }
+.header {
+  padding: 40px 32px 50px;
+}
 .home__container {
   display: flex;
   justify-content: space-between;
-  padding-top: 10px;
   margin-bottom: 40px;
 }
 .logo__link {
@@ -199,6 +199,7 @@
   font-size: 14px;
   line-height: 1.14;
   text-align: center;
+  padding: 20px;
   @include tablet {
     display: flex;
     justify-content: center;

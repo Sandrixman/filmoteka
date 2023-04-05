@@ -41,11 +41,9 @@ li {
 
 .container {
   width: 320px;
-  padding: 20px;
   margin: auto;
   @include tablet {
     width: 768px;
-    padding: 30px 32px;
   }
 
   @include desktop {

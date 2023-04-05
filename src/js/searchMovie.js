@@ -19,7 +19,7 @@ export function onSearchFormSubmit(evt) {
   const { searchInput } = evt.currentTarget.elements;
   const searchQuery = searchInput.value.trim();
   if (!searchQuery) {
-    errorMessage();
+    errorMessage(searchQuery);
     return;
   }
 
@@ -43,7 +43,7 @@ async function generateSearchedMovies(query) {
       .querySearch(query)
       .finally(() => spinerInstance.stop());
     if (!total_results) {
-      errorMessage();
+      errorMessage(total_results);
       gallery.innerHTML = '';
       return;
     }
@@ -53,6 +53,7 @@ async function generateSearchedMovies(query) {
     gallery.innerHTML = '';
     document.querySelector('.error-img')?.remove();
     renderMovieCard(gallery, movies.card_data);
+    gallery.style.minHeight = 'auto';
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
     paginationDiv.style.display = 'flex';
@@ -61,14 +62,15 @@ async function generateSearchedMovies(query) {
   }
 }
 
-function errorMessage() {
+function errorMessage(total_results) {
+  gallery.style.minHeight = 'auto';
   if (!document.querySelector('.error-message')) {
     searchForm.insertAdjacentHTML(
       'beforeEnd',
       `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`
     );
   }
-  if (!document.querySelector('.error-img')) {
+  if (!document.querySelector('.error-img') && total_results === 0) {
     moviesContainer.insertAdjacentHTML(
       'beforeEnd',
       `<img

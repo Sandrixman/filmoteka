@@ -1,10 +1,7 @@
 .pagination {
   display: flex;
   justify-content: center;
-  padding: 10px;
-  @include tablet {
-    padding: 30px;
-  }
+  gap: 2px;
 }
 
 .pagination .tui-page-btn {
