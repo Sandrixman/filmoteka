@@ -33,7 +33,7 @@ export function loadMovies(key) {
   if (movies.length) {
     document.querySelector('.emptyCollection')?.remove();
     renderMovieCard(gallery, movies);
-  } else {
+  } else if (!document.querySelector('.emptyCollection')) {
     const markup = `<div class="emptyCollection"><img src="${emptyCollection}" alt="emptyCollection"/></div>`;
     moviesContainer.insertAdjacentHTML('afterbegin', markup);
   }

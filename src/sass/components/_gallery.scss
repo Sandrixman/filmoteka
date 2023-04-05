@@ -73,3 +73,13 @@
     border-radius: 10px;
   }
 }
+
+.error-img {
+  height: 200px;
+  @include tablet {
+    height: 400px;
+  }
+  @include desktop {
+    height: 600px;
+  }
+}

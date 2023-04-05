@@ -9,7 +9,8 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import errorImg from '../images/pixar-404-Error.jpg';
 
-const { searchForm, gallery, searchInput, paginationDiv } = getRefs();
+const { searchForm, gallery, moviesContainer, searchInput, paginationDiv } =
+  getRefs();
 const tmdbAPIService = new TmdbAPIService();
 const pagination = new Pagination('pagination', options);
 
@@ -44,16 +45,13 @@ async function generateSearchedMovies(query) {
     if (!total_results) {
       errorMessage();
       gallery.innerHTML = '';
-      gallery.style.backgroundImage = `url(${errorImg})`;
-      gallery.style.height = '500px';
-      gallery.style.backgroundRepeat = 'no-repeat';
-      gallery.style.backgroundPosition = 'center';
       return;
     }
     const genresIdList = await tmdbAPIService.downloadGenresIdList();
     const movies = cardListGenerator(genresIdList, results, total_results);
 
     gallery.innerHTML = '';
+    document.querySelector('.error-img')?.remove();
     renderMovieCard(gallery, movies.card_data);
     if (pagination.getCurrentPage() === 0)
       pagination.reset(movies.total_results);
@@ -64,10 +62,22 @@ async function generateSearchedMovies(query) {
 }
 
 function errorMessage() {
-  searchForm.insertAdjacentHTML(
-    'beforeEnd',
-    `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`
-  );
+  if (!document.querySelector('.error-message')) {
+    searchForm.insertAdjacentHTML(
+      'beforeEnd',
+      `<p class="error-message">Search result not successful. Enter the correct movie name and try again</p>`
+    );
+  }
+  if (!document.querySelector('.error-img')) {
+    moviesContainer.insertAdjacentHTML(
+      'beforeEnd',
+      `<img
+        class="error-img"
+        src=${errorImg}
+        alt="error image"
+      />`
+    );
+  }
   const message = document.querySelector('.error-message');
   setTimeout(() => {
     message.remove();

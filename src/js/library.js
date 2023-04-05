@@ -5,7 +5,15 @@ import { onClickLink, closeModal } from './footer-modal';
 import { glide } from './slider-glide';
 import getRefs from './refs';
 
-const { queueBtn, watchedBtn, gallery, modal, backdropTrailer, footerModalEl, footerCloseBtn, } = getRefs();
+const {
+  queueBtn,
+  watchedBtn,
+  gallery,
+  modal,
+  backdropTrailer,
+  footerModalEl,
+  footerCloseBtn,
+} = getRefs();
 
 loadMovies(KEY_WATCHED);
 
@@ -14,8 +22,10 @@ queueBtn.addEventListener('click', onQueueBtnClick);
 
 gallery.addEventListener('click', renderModal);
 modal.addEventListener('click', onCardClick);
+
 modal.addEventListener('click', showTrailer);
 backdropTrailer.addEventListener('click', hideTrailer);
+
 footerModalEl.addEventListener('click', onClickLink);
 footerCloseBtn.addEventListener('click', closeModal);
 glide.mount();

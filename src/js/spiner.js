@@ -1,5 +1,8 @@
 import { Spinner } from 'spin.js';
 import 'spin.js/spin.css';
+import getRefs from './refs';
+
+const { gallery } = getRefs();
 
 export default function spiner() {
   const opts = {
@@ -23,5 +26,5 @@ export default function spiner() {
     position: 'fixed', // Element positioning
   };
 
-  return new Spinner(opts).spin(document.body);
+  return new Spinner(opts).spin(gallery);
 }
