@@ -1,9 +1,11 @@
 import { renderModal, onModalBtnClick } from './modal';
 import { showTrailer, hideTrailer } from './trailer';
 import { loadMovies, KEY_QUEUE, KEY_WATCHED } from './mylibrary-service';
+import { onClickLink, closeModal } from './footer-modal';
+import { glide } from './slider-glide';
 import getRefs from './refs';
 
-const { queueBtn, watchedBtn, gallery, modal, backdropTrailer } = getRefs();
+const { queueBtn, watchedBtn, gallery, modal, backdropTrailer, footerModalEl, footerCloseBtn, } = getRefs();
 
 loadMovies(KEY_WATCHED);
 
@@ -14,6 +16,9 @@ gallery.addEventListener('click', renderModal);
 modal.addEventListener('click', onCardClick);
 modal.addEventListener('click', showTrailer);
 backdropTrailer.addEventListener('click', hideTrailer);
+footerModalEl.addEventListener('click', onClickLink);
+footerCloseBtn.addEventListener('click', closeModal);
+glide.mount();
 
 function onWatchedBtnClick() {
   queueBtn.classList.remove('library__button--active');

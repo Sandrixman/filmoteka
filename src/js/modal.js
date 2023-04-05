@@ -58,6 +58,10 @@ export function onModalBtnClick(evt) {
 }
 
 export function renderModal(evt) {
+  if (evt.target.nodeName === 'UL') {
+    return;
+  }
+
   data = evt.target.closest('.movie-list__item');
   const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
