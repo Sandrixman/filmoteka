@@ -10,7 +10,6 @@
 
 .movie-list {
   max-width: 1280px;
-  min-height: 1000px;
   display: grid;
   align-items: stretch;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -31,9 +30,6 @@
     margin-bottom: 60px;
     margin-left: auto;
     margin-right: auto;
-  }
-  &.my-library {
-    min-height: auto;
   }
 }
 

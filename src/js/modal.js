@@ -10,7 +10,7 @@ import {
   KEY_WATCHED,
 } from './mylibrary-service';
 
-const { overlay, modal, modal__info, modalCloseBtn, bodyEl } = getRefs();
+const { overlay, modal, modal__info, modalCloseBtn, body } = getRefs();
 
 let data = '';
 let watchedArray = loadFromWatched();
@@ -66,7 +66,7 @@ export function renderModal(evt) {
   const { id, title, genres, poster, popularity, about, votes, vote } =
     data.dataset;
 
-  bodyEl.style.overflow = 'hidden';
+  body.style.overflow = 'hidden';
 
   let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
   if (queueArray.filter(item => item.id === id).length) {
@@ -142,7 +142,7 @@ function removeModal() {
 }
 
 function addHidden() {
-  bodyEl.style.overflow = 'auto';
+  body.style.overflow = 'auto';
   modal.classList.add('hidden');
   overlay.classList.add('hidden');
 

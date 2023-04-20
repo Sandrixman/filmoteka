@@ -1,7 +1,7 @@
 import { renderModal, onModalBtnClick } from './modal';
 import { showTrailer, hideTrailer } from './trailer';
 import { loadMovies, KEY_QUEUE, KEY_WATCHED } from './mylibrary-service';
-import { onClickLink, closeModal } from './footer-modal';
+import { onToggleTeamModal, closeModal } from './footer-modal';
 import { glide } from './slider-glide';
 import getRefs from './refs';
 
@@ -11,8 +11,8 @@ const {
   gallery,
   modal,
   backdropTrailer,
-  footerModalEl,
-  footerCloseBtn,
+  linkTeamModal,
+  modalCloseBtn,
 } = getRefs();
 
 loadMovies(KEY_WATCHED);
@@ -26,8 +26,8 @@ modal.addEventListener('click', onCardClick);
 modal.addEventListener('click', showTrailer);
 backdropTrailer.addEventListener('click', hideTrailer);
 
-footerModalEl.addEventListener('click', onClickLink);
-footerCloseBtn.addEventListener('click', closeModal);
+linkTeamModal.addEventListener('click', onToggleTeamModal);
+modalCloseBtn.addEventListener('click', closeModal);
 glide.mount();
 
 function onWatchedBtnClick() {

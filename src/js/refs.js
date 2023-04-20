@@ -1,9 +1,5 @@
 export default function getRefs() {
-  const footerModalEl = document.querySelector('.footer-modal-js');
-  const footerAboutModalEl = document.querySelector('.about-modal-js');
-  const footerCloseBtn = document.querySelector('.about-modal__close-js');
-  const footerBackdrop = document.querySelector('.backdrop-js');
-  const bodyEl = document.querySelector('body');
+  const body = document.querySelector('body');
   const searchForm = document.querySelector('.search__form');
   const gallery = document.querySelector('.movie-list');
   const moviesContainer = document.querySelector('.container.movie');
@@ -18,7 +14,10 @@ export default function getRefs() {
   const watchedBtn = document.querySelector('.watched__button');
   const backdropTrailer = document.querySelector('.backdrop-trailer');
   const playerDiv = document.querySelector('.player');
+  const linkTeamModal = document.querySelector('.footer__link');
+  const backdropTeamModal = document.querySelector('.backdrop');
   return {
+    body,
     searchForm,
     gallery,
     searchInput,
@@ -27,17 +26,13 @@ export default function getRefs() {
     overlay,
     modal__info,
     modalCloseBtn,
-    footerModalEl,
-    footerAboutModalEl,
-    footerCloseBtn,
-    footerBackdrop,
-    bodyEl,
     backdropTrailer,
     playerDiv,
-    footerModalEl,
     queueBtn,
     watchedBtn,
     library,
     moviesContainer,
+    linkTeamModal,
+    backdropTeamModal,
   };
 }

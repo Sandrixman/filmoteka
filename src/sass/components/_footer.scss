@@ -1,0 +1,18 @@
+.footer {
+  color: #545454;
+  background-color: #f7f7f7;
+}
+
+.footer__info {
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+  @include tablet {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.footer__link {
+  color: #545454;
+}

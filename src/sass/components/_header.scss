@@ -168,7 +168,6 @@
   display: flex;
   gap: 20px;
   justify-content: center;
-  padding-bottom: 30px;
 }
 .library__button {
   width: 130px;
@@ -193,21 +192,7 @@
     box-shadow: (0px 8px 43px rgba(255, 107, 1, 0.6));
   }
 }
-.footer {
-  color: #545454;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.14;
-  text-align: center;
-  padding: 20px;
-  @include tablet {
-    display: flex;
-    justify-content: center;
-  }
-}
-.footer__link {
-  color: #545454;
-}
+
 .error-message {
   position: absolute;
   top: 20px;

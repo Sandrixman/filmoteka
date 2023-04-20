@@ -1,32 +1,34 @@
 import getRefs from './refs';
 
-const { footerBackdrop, footerAboutModalEl, bodyEl } = getRefs();
+const { backdropTeamModal, body, modalCloseBtn } = getRefs();
+let isModalOpen = false;
 
-export function onClickLink(evt) {
+export function onToggleTeamModal(evt) {
   evt.preventDefault();
-  footerBackdrop.classList.remove('is-hidden');
-  footerAboutModalEl.classList.remove('is-hidden');
-  bodyEl.classList.add('modal-open');
-  footerBackdrop.addEventListener('click', onClickBackdrop);
-  document.addEventListener('keydown', onClickEscape);
+  backdropTeamModal.classList.toggle('is-hidden');
+  body.classList.toggle('modal-open');
+  if (!isModalOpen) {
+    modalCloseBtn.addEventListener('click', onToggleTeamModal);
+    backdropTeamModal.addEventListener('click', onBackdrop);
+    body.addEventListener('keydown', onEscape);
+  }
+  if (isModalOpen) {
+    modalCloseBtn.removeEventListener('click', onToggleTeamModal);
+    body.removeEventListener('keydown', onEscape);
+    backdropTeamModal.removeEventListener('click', onBackdrop);
+    return (isModalOpen = false);
+  }
+  isModalOpen = true;
 }
 
-export function closeModal(evt) {
-  footerBackdrop.classList.add('is-hidden');
-  footerAboutModalEl.classList.add('is-hidden');
-  bodyEl.classList.remove('modal-open');
-  footerBackdrop.removeEventListener('click', onClickBackdrop);
-  document.removeEventListener('keydown', onClickEscape);
-}
-
-function onClickEscape(evt) {
+function onEscape(evt) {
   if (evt.key === 'Escape') {
-    closeModal();
+    onToggleTeamModal(evt);
   }
 }
 
-function onClickBackdrop(evt) {
+function onBackdrop(evt) {
   if (evt.currentTarget === evt.target) {
-    closeModal();
+    onToggleTeamModal(evt);
   }
 }

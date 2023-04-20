@@ -253,11 +253,11 @@
   visibility: hidden;
   pointer-events: none;
 }
-body.modal-open {
+.modal-open {
   overflow: hidden;
 }
 
-.about-modal {
+.team-modal {
   z-index: 1000;
   width: 300px;
   height: 430px;
@@ -398,7 +398,7 @@ div.glide {
 .glide__track {
   overflow: hidden;
 }
-.close-button {
+.close-btn {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -427,8 +427,8 @@ div.glide {
     width: 14px;
     height: 14px;
   }
-  &:hover .close-button__svg,
-  &:focus .close-button__svg {
+  &:hover .close-btn__svg,
+  &:focus .close-btn__svg {
     transform: scale(1.2);
     fill: #ff6b01;
   }

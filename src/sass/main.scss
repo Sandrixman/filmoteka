@@ -3,6 +3,7 @@
 @import './utils/placeholder';
 @import './utils/mixins';
 @import './components/header';
+@import './components/footer';
 @import './components/gallery';
 @import './components/modal';
 @import './components/paginator';
@@ -53,8 +54,4 @@ li {
 
 .link {
   text-decoration: none;
-}
-
-footer {
-  background-color: #f7f7f7;
 }
