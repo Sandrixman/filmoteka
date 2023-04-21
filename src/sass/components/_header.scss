@@ -106,7 +106,7 @@
   &:hover,
   &:focus {
     transform: scale(1.1);
-    text-shadow: 1px 1px 5px #ff001b, -1px -1px 5px #ff001b;
+    text-shadow: 1px 1px 5px #c73838, -1px -1px 5px #c73838;
   }
 }
 .navigation__link--current::after {
@@ -116,7 +116,7 @@
   top: 100%;
   width: 100%;
   height: 3px;
-  background-color: #ff001b;
+  background-color: #c73838;
   border-radius: 2px;
   display: block;
 }
@@ -137,28 +137,28 @@
 }
 .search__input {
   width: 100%;
-  height: 20px;
-  padding-bottom: 4px;
+  padding: 10px;
   border: none;
   border-bottom: 0.5px solid #ffffff;
   color: #ffffff;
   background-color: transparent;
   outline: none;
   cursor: pointer;
-  font-weight: 400;
   font-size: 14px;
-  line-height: 1.14;
-  // color: #ffffff;
-}
-.search__input::placeholder {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.14;
-  color: #ffffff;
+  &:focus {
+    border-bottom: 1px solid #c73838;
+    border-radius: 5px;
+    box-shadow: 0 0 15px #c73838;
+  }
+  &::placeholder {
+    font-size: 14px;
+    color: #ffffff;
+  }
 }
 .seach__button {
   position: absolute;
-  right: 0;
+  right: 10px;
+  top: 10px;
   background-color: transparent;
 }
 .search__icon {
@@ -196,7 +196,7 @@
 .error-message {
   position: absolute;
   top: 20px;
-  color: #ff001b;
+  color: #c73838;
   font-size: 12px;
   line-height: 14px;
 }
