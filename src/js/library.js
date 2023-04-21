@@ -1,19 +1,12 @@
 import { renderModal, onModal } from './modal';
 import { showTrailer, hideTrailer } from './trailer';
 import { loadMovies, KEY_QUEUE, KEY_WATCHED } from './mylibrary-service';
-import { onToggleTeamModal, closeModal } from './footer-modal';
+import { onToggleTeamModal } from './footer-modal';
 import { glide } from './slider-glide';
 import getRefs from './refs';
 
-const {
-  queueBtn,
-  watchedBtn,
-  gallery,
-  modal,
-  backdropTrailer,
-  linkTeamModal,
-  modalCloseBtn,
-} = getRefs();
+const { queueBtn, watchedBtn, gallery, modal, backdropTrailer, linkTeamModal } =
+  getRefs();
 
 loadMovies(KEY_WATCHED);
 
@@ -27,7 +20,6 @@ modal.addEventListener('click', showTrailer);
 backdropTrailer.addEventListener('click', hideTrailer);
 
 linkTeamModal.addEventListener('click', onToggleTeamModal);
-modalCloseBtn.addEventListener('click', closeModal);
 glide.mount();
 
 function onWatchedBtnClick() {
