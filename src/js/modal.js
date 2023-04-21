@@ -10,14 +10,14 @@ import {
   KEY_WATCHED,
 } from './mylibrary-service';
 
-const { overlay, modal, modal__info, modalCloseBtn, body } = getRefs();
+const { overlay, modalMovie, modalCloseBtn, body } = getRefs();
 
 let data = '';
 let watchedArray = loadFromWatched();
 let queueArray = loadFromQueue();
 export let movieId = '';
 
-export function onModalBtnClick(evt) {
+export function onModal(evt) {
   const newObject = createMuvieObject(data.dataset);
   const { id } = data.dataset;
   movieId = id;
@@ -68,91 +68,87 @@ export function renderModal(evt) {
 
   body.style.overflow = 'hidden';
 
-  let queueBtnMarkup = 'class="modal__btn add-queue">add to queue';
+  let queueBtnMarkup = 'class="modal-movie__btn add-queue">add to queue';
   if (queueArray.filter(item => item.id === id).length) {
     queueBtnMarkup =
-      'class="modal__btn delete-queue btn-accent">Delete from queue';
+      'class="modal-movie__btn delete-queue btn-accent">Delete from queue';
   }
 
   let watchedBtnMarkup =
-    'class="modal__btn add-watched btn-accent">add to Watched';
+    'class="modal-movie__btn add-watched btn-accent">add to Watched';
   if (watchedArray.filter(item => item.id === id).length) {
     watchedBtnMarkup =
-      'class="modal__btn delete-watched btn-accent">Delete from Watched';
+      'class="modal-movie__btn delete-watched btn-accent">Delete from Watched';
   }
 
   const markup = `
-  <div class="img-wrapper">
-    <img
-      class="modal__img play"
-      src="${poster}"
-      alt="poster"
-    />
-    <img
-      class="play-icon play"
-      src="${playIcon}"
-      alt="play-icon"
-    />
-  </div>
-  <div class="movie-description">
-    <h2 class="movie-title">${title}</h2>
-    <ul class="movie-info__list">
-      <li class="movie-info__item">
-        <p class="info-name">Vote / Votes</p>
-        <p class="info-value votes-wrapper"><span class="vote-average">${vote}</span> / ${votes}</p>
-      </li>
-      <li class="movie-info__item">
-        <p class="info-name">Popularity</p>
-        <p class="info-value">${popularity}</p>
-      </li>
-      <li class="movie-info__item">
-        <p class="info-name">Original Title</p>
-        <p class="info-value">${title}</p>
-      </li>
-      <li class="movie-info__item">
-        <p class="info-name">Genre</p>
-        <p class="info-value">${genres}</p>
-      </li>
-    </ul>
-    <div class="movie-about">
-      <p class="about__title">About</p>
-      <p class="about__text">${about}</p>
+    <div class="modal-movie__img-wrapper">
+      <img
+        class="modal-movie__img play"
+        src="${poster}"
+        alt="poster"
+      />
+      <img
+        class="play-icon play"
+        src="${playIcon}"
+        alt="play-icon"
+      />
     </div>
-    <div class="btn-wrapper">
-      <button ${watchedBtnMarkup}</button>
-      <button ${queueBtnMarkup}</button>
+    <div class="modal-movie__description">
+      <h2 class="modal-movie__title">${title}</h2>
+      <ul class="modal-movie__info">
+        <li class="modal-movie__info-item">
+          <p class="modal-movie__info-title">Vote / Votes</p>
+          <p class="modal-movie__info-value votes-wrapper"><span class="vote-average">${vote}</span> / ${votes}</p>
+        </li>
+        <li class="modal-movie__info-item">
+          <p class="modal-movie__info-title">Popularity</p>
+          <p class="modal-movie__info-value">${popularity}</p>
+        </li>
+        <li class="modal-movie__info-item">
+          <p class="modal-movie__info-title">Original Title</p>
+          <p class="modal-movie__info-value">${title}</p>
+        </li>
+        <li class="modal-movie__info-item">
+          <p class="modal-movie__info-title">Genre</p>
+          <p class="modal-movie__info-value">${genres}</p>
+        </li>
+      </ul>
+      <div class="modal-movie__about">
+        <p class="modal-movie__about-title">About</p>
+        <p class="modal-movie__about-text">${about}</p>
+      </div>
+      <div class="modal-movie__btn-wrapper">
+        <button ${watchedBtnMarkup}</button>
+        <button ${queueBtnMarkup}</button>
+      </div >
     </div >
-  </div > `;
+  `;
 
-  modal__info.innerHTML = markup;
+  modalMovie.innerHTML = markup;
 
-  modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 
-  // ховаємо модалку фільму по Escape
-
-  document.addEventListener('keydown', escapePressed);
-
-  removeModal();
+  body.addEventListener('keydown', escapePressed);
+  modalCloseBtn.addEventListener('click', modalHide);
+  overlay.addEventListener('click', onBackdrop);
 }
 
-function removeModal() {
-  modalCloseBtn.addEventListener('click', addHidden);
-  overlay.addEventListener('click', addHidden);
-}
-
-function addHidden() {
+function modalHide() {
   body.style.overflow = 'auto';
-  modal.classList.add('hidden');
   overlay.classList.add('hidden');
 
-  document.removeEventListener('keydown', escapePressed);
+  body.removeEventListener('keydown', escapePressed);
 }
 
 function escapePressed(event) {
-  event.preventDefault();
-
   if (event.code === 'Escape') {
-    addHidden();
+    modalHide();
+  }
+}
+
+function onBackdrop(evt) {
+  if (evt.currentTarget === evt.target) {
+    modalHide();
   }
 }

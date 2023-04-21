@@ -1,6 +1,6 @@
 import getRefs from './refs';
 import { renderMovieCard } from './renderMovieCard';
-import LocalStorageAPIService from './local-storage-api';
+import LocalStorageAPIService from './localStorageApi';
 import emptyCollection from '../images/empty-collection.jpg';
 
 export const KEY_WATCHED = 'watchedMovies';

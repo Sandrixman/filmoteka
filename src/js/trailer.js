@@ -7,11 +7,14 @@ const { backdropTrailer, playerDiv } = getRefs();
 
 export async function showTrailer(evt) {
   if (evt.target.classList.contains('play')) {
-    backdropTrailer.classList.remove('is-hidden');
     const { results } = await tmdbAPIService.fetchTrailer(movieId);
-    const key = results[0].key;
-
-    insertIframe(key);
+    backdropTrailer.classList.remove('is-hidden');
+    if (results.length > 0) {
+      const key = results[results.length - 1].key;
+      insertIframe(key);
+    } else {
+      errorTrailer();
+    }
   }
   return;
 }
@@ -22,6 +25,12 @@ export function hideTrailer() {
 }
 
 function insertIframe(key) {
-  playerDiv.innerHTML = `<iframe src="https://www.youtube.com/embed/${key}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  playerDiv.innerHTML = `
+  <iframe src="https://www.youtube.com/embed/${key}?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   `;
+}
+function errorTrailer() {
+  playerDiv.innerHTML = `
+    <iframe src="https://www.youtube.com/embed/6DhiiFGk4_s?autoplay=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    `;
 }

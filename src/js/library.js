@@ -1,4 +1,4 @@
-import { renderModal, onModalBtnClick } from './modal';
+import { renderModal, onModal } from './modal';
 import { showTrailer, hideTrailer } from './trailer';
 import { loadMovies, KEY_QUEUE, KEY_WATCHED } from './mylibrary-service';
 import { onToggleTeamModal, closeModal } from './footer-modal';
@@ -43,7 +43,7 @@ function onQueueBtnClick() {
 }
 
 function onCardClick(evt) {
-  const key = onModalBtnClick(evt);
+  const key = onModal(evt);
   switch (key) {
     case KEY_WATCHED:
       if (watchedBtn.classList.contains('library__button--active'))

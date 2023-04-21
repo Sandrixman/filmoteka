@@ -6,9 +6,9 @@ export default function getRefs() {
   const library = document.querySelector('main');
   const searchInput = document.querySelector('.search__input');
   const paginationDiv = document.querySelector('.pagination');
-  const modal = document.querySelector('.js-modal');
+  const modal = document.querySelector('.modal-movie');
   const overlay = document.querySelector('.overlay');
-  const modal__info = document.querySelector('.modal__info');
+  const modalMovie = document.querySelector('.modal-movie__wrapper');
   const modalCloseBtn = document.querySelector('.close-btn');
   const queueBtn = document.querySelector('.queue__button');
   const watchedBtn = document.querySelector('.watched__button');
@@ -16,6 +16,7 @@ export default function getRefs() {
   const playerDiv = document.querySelector('.player');
   const linkTeamModal = document.querySelector('.footer__link');
   const backdropTeamModal = document.querySelector('.backdrop');
+
   return {
     body,
     searchForm,
@@ -24,7 +25,7 @@ export default function getRefs() {
     paginationDiv,
     modal,
     overlay,
-    modal__info,
+    modalMovie,
     modalCloseBtn,
     backdropTrailer,
     playerDiv,
